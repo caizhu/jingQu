@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="myVideoSection">
+    <video 
+      id="myVideo" 
+      src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" 
+      binderror="videoErrorCallback" 
+      show-center-play-btn='{{true}}' 
+      show-play-btn="{{true}}" 
+      controls
+      poster="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3871678567,2844469471&fm=26&gp=0.jpg"
+      object-fit="cover"
+      picture-in-picture-mode="{{['push', 'pop']}}"
+      style="width:100%;height:240px"
+    ></video>    
+  </view>  
+  <view class="mainbox headerbox">
+    <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
+    <p>珠海长隆海洋王国</p>
+    <p>时长：45秒</p>
+    <p>需上传视频：3段</p>
+    <h5>￥431.21</h5>
+    <button class=" btn shareBtn"> <image src="../../images/share.png"></image>分享</button>
+  </view>   
+  <view class="mainbox">
+    <view class="addBVideo">
+      <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
+      <ul class="addList">
+        <li>
+          <image src="../../images/add.png" class="addimg"></image>
+          上传视频
+        </li>
+        <li>
+          <image src="../../images/add.png" class="addimg"></image>
+          上传视频
+        </li>
+        <li>
+          <image src="../../images/add.png" class="addimg"></image>
+          上传视频
+        </li>
+      </ul>
+    </view>    
+    <view class="submitBox">
+      <label class="radio">
+        <radio value="r1" checked="true"/>我已阅读并同意<a>《视频制作协议》</a>
+      </label>
+      <button class="btn">开始制作</button>
+  </view>
+</view>  
+</view>

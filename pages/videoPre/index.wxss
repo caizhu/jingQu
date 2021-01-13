@@ -1,0 +1,48 @@
+/**index.wxss**/
+.mainbox{
+  padding-top: 20px;
+}
+.headimg{
+  width: 100%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+.headimg .playImg{
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -30px 0 0 -30px;
+  opacity:0.8;
+}
+.con1{
+  padding: 20px;
+  text-align: center;
+  color:#868595;
+}
+.con1 h3{
+  line-height: 26px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 30px;
+}
+.con2{
+  padding:12px 15px;
+  border-top: 1px solid #f0f0f0;
+  overflow: hidden;
+  margin-top: 15px;
+}
+.con2 .btn{
+  float: right;
+  margin-left:10px;
+}
+.submitBox{
+  width: 100%;
+  margin:50px 0;
+ }
+ .myVideoSection{
+  width: 100%;
+  height: 240px;
+}

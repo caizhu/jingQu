@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="headerbox">
+      <image src="{{imgUrl}}" style="width:100%;height:100%"></image>
+      <view class="textCon">
+        <h2>珠海横琴长隆海洋王国</h2>
+        <p>八大主题区，集各类珍稀海洋动物展馆、动感游乐设施、3...</p>
+      </view>    
+    </view>
+  <view class="mainbox">
+    <view class="ibox adtext">
+      <rich-text>你还在景点比耶，做剪刀手吗？</rich-text>
+      <rich-text>告别单调，自己也可以制作大师视频！</rich-text>    
+    </view>
+    <view class="ibox">
+      <image src="{{imgUrl}}" style="width:100%;height:160px;"></image>
+      <view class="contentList">
+          <h3>海洋馆·我和白鲸一起飞跃海洋馆·我和白鲸一起飞跃</h3>
+          <h5>￥66.22</h5>
+          <button class="btn" bindtap="jump">我也要拍1</button>
+      </view>
+    </view>
+    <view class="ibox">
+      <image src="{{imgUrl}}" style="width:100%;height:160px;"></image>
+      <view class="contentList">
+          <h3>海洋馆·我和白鲸一起飞跃海洋馆·我和白鲸一起飞跃</h3>
+          <h5>￥66.22</h5>
+          <button class="btn">我也要拍</button>
+      </view>
+    </view>
+  </view>
+</view>

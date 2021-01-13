@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="buyList">
+      <image src="{{imgUrl}}" class="peopleImg"></image>
+      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
+      <p>珠海长隆海洋王国</p>
+      <h5>￥444.34</h5>
+      <small>2021-01-10 10:11</small>
+    </view>
+    <view class="buyList">
+      <image src="{{imgUrl}}" class="peopleImg"></image>
+      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
+      <p>珠海长隆海洋王国</p>
+      <h5>￥444.34</h5>
+      <small>2021-01-10 10:11</small>
+    </view>
+    <view class="buyList">
+      <image src="{{imgUrl}}" class="peopleImg"></image>
+      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
+      <p>珠海长隆海洋王国</p>
+      <h5>￥444.34</h5>
+      <small>2021-01-10 10:11</small>
+    </view>
+</view>

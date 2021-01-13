@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="peopleHeader">
+    <image src="{{peopleImg}}" class="peopleImg"></image>
+    <h3>肖战DAYTOY</h3>
+    <p>186****123</p>
+  </view>
+  <ul class="funList">
+    <li>
+      <image src="{{listImg}}" class="listImg"></image>购买记录
+      <image src="{{rightArrow}}" class="rightArrow"></image>
+    </li>
+  </ul>
+</view>

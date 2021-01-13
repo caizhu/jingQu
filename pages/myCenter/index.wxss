@@ -1,0 +1,65 @@
+/**index.wxss**/
+.peopleHeader{
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color:#fff;
+  padding: 30px 0;
+  background: -webkit-linear-gradient(left,#345dfb, #3becf2); /* Safari 5.1 - 6.0 */ 
+  background: -o-linear-gradient(right,#345dfb, #3becf2); /* Opera 11.1 - 12.0 */ 
+  background: -moz-linear-gradient(right,#345dfb, #3becf2); /* Firefox 3.6 - 15 */
+  background: linear-gradient(right,#345dfb, #3becf2); /* 标准的语法 */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.peopleHeader .peopleImg{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.peopleHeader h3{
+  color: #fff;
+  line-height: 30px;
+}
+.funList{
+  padding: 15px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+  -webkit-box-sizing: border-box;
+  /* Safari */
+}
+.funList li{
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  background:#fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 15px 15px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+  -webkit-box-sizing: border-box;
+  /* Safari */
+  position: relative;
+}
+.funList li .listImg{
+  width: 22px;
+  height: 22px;
+  display: block;
+  float: left;
+  margin-right: 15px;
+}
+.funList li .rightArrow{
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -9px;
+}

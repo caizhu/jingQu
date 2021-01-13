@@ -1,0 +1,88 @@
+/**index.wxss**/
+.ibox{
+  border-radius: 0;
+  box-shadow: none;
+}
+.headimg{
+  width: 100%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+.headimg .playImg{
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -30px 0 0 -30px;
+  opacity:0.8;
+}
+.headerbox{
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding-top:15px;
+  padding-bottom: 20px;
+}
+.headerbox h3{
+  font-size: 18px;
+  line-height:28px;
+  padding:0 70px 10px 0;
+}
+.headerbox h5{
+  font-size: 18px;  
+  position: absolute;
+  top: 17px;
+  right: 15px;
+}
+.headerbox p{
+  color:#868595;
+}
+.shareBtn{
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+}
+.addBVideo{
+  padding: 20px 0;
+  overflow: visible;
+}
+.addBVideo::after{
+  content: '';
+  display: block; 
+  height: 0; 
+  clear: both; 
+}
+.addList{
+  padding: 15px 0;
+}
+.addList li{
+  width: 100px;
+  height: 120px;
+  font-size: 12px;
+  color: #868595;
+  border-radius: 10px;
+  margin:0 10px 10px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: #fff;
+  text-align: center;
+  padding:17px 0;
+  float: left;
+}
+.addList .addimg{
+  width: 36px;
+  height:36px;
+  display: block;
+  margin: 10px auto;
+}
+.submitBox{
+ width: 100%;
+ margin:30px 0;
+}
+.submitBox .btn{
+  margin-top: 20px;
+}
+.myVideoSection{
+  width: 100%;
+  height: 240px;
+}
