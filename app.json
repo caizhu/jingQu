@@ -6,15 +6,15 @@
     "pages/beShared/index", 
     "pages/videoPre/index", 
     "pages/video/index", 
-    "pages/myCenter/index",  
-    
+    "pages/myCenter/index",      
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "景区视频",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true    
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
