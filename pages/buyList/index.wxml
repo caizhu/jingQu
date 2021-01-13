@@ -1,24 +1,12 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="buyList">
+    <view class="buyList" wx:for="{{array}}" wx:key="id">
       <image src="{{imgUrl}}" class="peopleImg"></image>
-      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
-      <p>珠海长隆海洋王国</p>
-      <h5>￥444.34</h5>
-      <small>2021-01-10 10:11</small>
-    </view>
-    <view class="buyList">
-      <image src="{{imgUrl}}" class="peopleImg"></image>
-      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
-      <p>珠海长隆海洋王国</p>
-      <h5>￥444.34</h5>
-      <small>2021-01-10 10:11</small>
-    </view>
-    <view class="buyList">
-      <image src="{{imgUrl}}" class="peopleImg"></image>
-      <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国</h3>
-      <p>珠海长隆海洋王国</p>
-      <h5>￥444.34</h5>
-      <small>2021-01-10 10:11</small>
+      <h3>{{item.title}}</h3>
+      <p>{{item.message}}</p>
+      <h5>{{item.price}}</h5>
+      <small>{{item.date}}</small>
     </view>
 </view>
+<!-- <button class="btn" bindtap="showToastBtn">显示消息提示框(测试)</button>
+<button class="btn" bindtap="showModelBtn">显示模态对话框(测试)</button> -->

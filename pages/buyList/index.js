@@ -4,7 +4,20 @@ const app = getApp()
 import grace from "../../grace/grace.js"
 grace.page({
   data: {
-    imgUrl:'../../images/2.jpg'
+    array: [{
+      id:1,
+      title:'珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    }, {
+      id:2,
+      title:'珠海横琴长隆海洋王国珠海横琴长',
+      message: '珠海长隆海洋王国',
+      price:'￥444.34',
+      date:'2021-01-10 10:11'
+    }],
+    imgUrl:'../../images/2.jpg',    
   },
   // 事件处理函数
   bindViewTap() {
@@ -40,6 +53,95 @@ grace.page({
       })
     }
   },
+  showToastBtn: function () {
+    wx.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 4000
+    })
+  },
+  showModelBtn: function () {
+    wx.showActionSheet({
+      itemList: ['A', 'B', 'C'],
+      success (res) {
+        console.log(res.tapIndex)
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },  
+  onPullDownRefresh: function () {    
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    let newwords = [{
+      id:3,
+      title:'珠海横琴长国',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    },{
+      id:3,
+      title:'珠海横琴长国',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    },{
+      id:3,
+      title:'珠海横琴长国',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    },{
+      id:3,
+      title:'珠海横琴长国',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    }].concat(this.data.array);
+    setTimeout( ()=> {
+      this.setData({
+        array: newwords
+      })
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+     }, 2000)
+  },
+  onReachBottom:function(){
+    console.log('hi')
+    if (this.data.loading) return;
+    this.setData({ loading: true });
+    updateRefreshIcon.call(this);
+    var newwords = this.data.array.concat([{
+        id:4,
+        title:'珠海横琴长国',
+        message: '珠海长隆海洋王国',
+        price:'111110.34',
+        date:'2021-01-10 10:11'
+      }
+    ]);
+    setTimeout( () =>{
+      this.setData({
+       loading: false,
+       array: newwords
+      })
+    }, 2000)
+   },
+   updateRefreshIcon() {
+    var deg = 0;
+    console.log('旋转开始了.....')
+    var animation = wx.createAnimation({
+     duration: 1000
+    });
+    var timer = setInterval( ()=> {
+     if (!this.data.loading)
+      clearInterval(timer);
+     animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
+     deg += 360;
+     this.setData({
+      refreshAnimation: animation.export()
+     })
+    }, 2000);
+   },
   getUserInfo(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

@@ -1,8 +1,8 @@
 {
-  "pages":[    
+  "pages":[  
+    "pages/buyList/index",   
     "pages/index/index", 
     "pages/editVideo/index", 
-    "pages/buyList/index", 
     "pages/beShared/index", 
     "pages/videoPre/index", 
     "pages/video/index", 
@@ -13,8 +13,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "景区视频",
-    "navigationBarTextStyle":"black",
-    "enablePullDownRefresh":true    
+    "navigationBarTextStyle":"black"
+        
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
