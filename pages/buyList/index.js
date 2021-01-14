@@ -18,11 +18,12 @@ grace.page({
       date:'2021-01-10 10:11'
     }],
     imgUrl:'../../images/2.jpg',    
+    refreshAnimation:null
   },
   // 事件处理函数
-  bindViewTap() {
+  bindVideoShow() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../videoShow/index'
     })
   },
   onLoad() {
@@ -53,24 +54,7 @@ grace.page({
       })
     }
   },
-  showToastBtn: function () {
-    wx.showToast({
-      title: '成功',
-      icon: 'success',
-      duration: 4000
-    })
-  },
-  showModelBtn: function () {
-    wx.showActionSheet({
-      itemList: ['A', 'B', 'C'],
-      success (res) {
-        console.log(res.tapIndex)
-      },
-      fail (res) {
-        console.log(res.errMsg)
-      }
-    })
-  },  
+  
   onPullDownRefresh: function () {    
     wx.showNavigationBarLoading() //在标题栏中显示加载
     let newwords = [{
@@ -108,9 +92,9 @@ grace.page({
   },
   onReachBottom:function(){
     console.log('hi')
-    if (this.data.loading) return;
+    // if (this.data.loading) return;
     this.setData({ loading: true });
-    updateRefreshIcon.call(this);
+    this.updateRefreshIcon.call(this);
     var newwords = this.data.array.concat([{
         id:4,
         title:'珠海横琴长国',

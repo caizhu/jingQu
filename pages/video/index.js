@@ -9,7 +9,7 @@ Page({
   onLoad: function (option) {
     const eventChannel = this.getOpenerEventChannel()
     // eventChannel.emit('acceptDataFromOpenedPage', { data: 'send from opened page' });
-    eventChannel.on('acceptDataFromOpenerPage', function (data) {
+    eventChannel.on('videoListRow', function (data) {
       console.log(data)
     })
   },
@@ -39,5 +39,31 @@ Page({
   videoErrorCallback(e) {
     console.log('视频错误信息:')
     console.log(e.detail.errMsg)
+  },
+  selectVideo(){ 
+    wx.showActionSheet({
+      itemList: ['拍摄', '从相册中选择'],
+      success (res) {
+        if(res.tapIndex==1){
+          wx.navigateTo({
+            url: '../editVideo/index'
+          })
+        }
+        console.log(res.tapIndex) //0,1,2
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }})
+   
+  },
+  goToMakeVideo(){
+    wx.showToast({
+      title: '正在玩命制作中',
+      icon: 'loading',
+      duration: 3000
+    });
+    wx.navigateTo({
+      url: '../videoShow/index'
+    })
   }
 })

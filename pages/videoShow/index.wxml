@@ -27,7 +27,7 @@
     </view>
     </view>
     <view class="submitBox">     
-      <button class="btn">开始制作</button>
+      <button class="btn" bindtap="startUpload">下载视频</button>
   </view>
 </view>
 </view>

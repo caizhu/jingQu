@@ -1,10 +1,11 @@
 {
   "pages":[  
-    "pages/buyList/index",   
     "pages/index/index", 
+    "pages/buyList/index",   
+    "pages/startVideoPart/index",     
     "pages/editVideo/index", 
     "pages/beShared/index", 
-    "pages/videoPre/index", 
+    "pages/videoShow/index", 
     "pages/video/index", 
     "pages/myCenter/index",      
     "pages/logs/logs"

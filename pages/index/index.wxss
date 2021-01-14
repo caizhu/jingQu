@@ -60,3 +60,15 @@
   white-space: nowrap;
   text-overflow:ellipsis;
 }
+.toUserCenter{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border:1px solid #eee;
+  padding: 9px;
+  width: 34px !important;
+  height: 34px;
+}

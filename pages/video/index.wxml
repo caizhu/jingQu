@@ -26,7 +26,7 @@
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <ul class="addList">
-        <li>
+        <li bindtap="selectVideo">
           <image src="../../images/add.png" class="addimg"></image>
           上传视频
         </li>
@@ -44,7 +44,7 @@
       <label class="radio">
         <radio value="r1" checked="true"/>我已阅读并同意<a>《视频制作协议》</a>
       </label>
-      <button class="btn">开始制作</button>
+      <button class="btn" bindtap="goToMakeVideo">开始制作</button>
   </view>
 </view>  
 </view>

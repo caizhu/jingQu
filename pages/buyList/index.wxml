@@ -1,11 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="buyList" wx:for="{{array}}" wx:key="id">
+    <view class="buyList" wx:for="{{array}}" wx:key="id" bindtap="bindVideoShow">
       <image src="{{imgUrl}}" class="peopleImg"></image>
       <h3>{{item.title}}</h3>
       <p>{{item.message}}</p>
       <h5>{{item.price}}</h5>
       <small>{{item.date}}</small>
+    </view>
+    <view class="refresh-block" wx:if="{{loading}}">
+    <image animation="{{refreshAnimation}}" src="../../images/add.png"></image>
     </view>
 </view>
 <!-- <button class="btn" bindtap="showToastBtn">显示消息提示框(测试)</button>

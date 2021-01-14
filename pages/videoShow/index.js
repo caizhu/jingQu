@@ -11,4 +11,11 @@ Page({
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo')
   },
+  startUpload(){
+    wx.showToast({
+      title: '正在下载',
+      icon: 'loading',
+      duration: 3000
+    })
+  }
 })

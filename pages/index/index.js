@@ -5,13 +5,19 @@ const app = getApp()
 Page({
   data: {
     imgUrl:'../../images/1.jpg',
+    imgUser:'../../images/user.png',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   // 事件处理函数
-  jump: function () {
+  goToUserCenter: function () {
+    wx.navigateTo({
+      url: '../myCenter/index'
+    })
+  },
+  doVideo: function () {
     wx.navigateTo({
       url: '../video/index',
       events: {
@@ -20,13 +26,8 @@ Page({
         },
       },
       success: function (res) {
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'send from opener page1111' })
+        res.eventChannel.emit('videoListRow', { data: 'send from opener page1111' })
       }
-    })
-  },
-   bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
     })
   },
   onLoad() {

@@ -13,7 +13,7 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
-h1,h2,h3,h4,h5,p,ul,li{
+h1,h2,h3,h4,h5,p,ul,li,view{
   display: block;
   box-sizing: border-box;
   -moz-box-sizing: border-box;

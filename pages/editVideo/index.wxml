@@ -1,4 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  
+  <view class="imgBoxFull" bindtap="finishVideo">
+    <image src="{{imgUrl}}" class="fullImg"></image>
+  </view>
 </view>

@@ -13,9 +13,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   // 事件处理函数
-  bindViewTap() {
+  goToBuyList() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../buyList/index'
     })
   },
   onLoad() {
