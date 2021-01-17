@@ -8,16 +8,40 @@ grace.page({
   },
   // 事件处理函数
   onLoad() {    
-      // wx.openVideoEditor({
-      //   filePath:'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
-      //   success: (res) => {
-      //     console.log(res);
-      //   }
-      // })
-  },
-  finishVideo(){
-    wx.navigateTo({
-      url: '../video/index'
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('sendVideoUrlToNext', function (data) {
+      let acceptData=data.data;
+      wx.openVideoEditor({
+        filePath:acceptData,
+        success(val){         
+          console.log(JSON.stringify(val));
+          // this.finishVideo()
+        }
+      })
     })
+  },
+  // selectVideo(){
+  //   wx.chooseVideo({
+  //     sourceType: ['album','camera'],
+  //     maxDuration: 60,
+  //     camera: ['front', 'back'],
+  //     compressed:false,
+  //     success(res) {
+  //       wx.openVideoEditor({
+  //         filePath:res.tempFilePath,
+  //         success(val){
+  //           console.log(val)
+  //         }
+  //       })
+  //       console.log(res.tempFilePath);
+  //       // wxfile://tmp_4ad0cacf9a808f04c7e39ddc15885772380ba9c956adb2ee.mp4
+  //     }
+  //   })
+  // },
+  finishVideo(val){
+    console.log(val)
+    // wx.navigateTo({
+    //   url: '../video/index'
+    // })
   }
 })

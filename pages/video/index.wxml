@@ -15,7 +15,7 @@
     ></video>    
   </view>  
   <view class="mainbox headerbox">
-    <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长aaa隆海洋王国</h3>
+    <h3>珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长aaa隆海洋王国aaa</h3>
     <p>珠海长隆海洋王国</p>
     <p>时长：45秒</p>
     <p>需上传视频：3段</p>
@@ -26,16 +26,8 @@
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <ul class="addList">
-        <li bindtap="selectVideo">
-          <image src="../../images/add.png" class="addimg"></image>
-          上传视频
-        </li>
-        <li>
-          <image src="../../images/add.png" class="addimg"></image>
-          上传视频
-        </li>
-        <li>
-          <image src="../../images/add.png" class="addimg"></image>
+        <li wx:for="{{arrayList}}" wx:key="id" data-index="{{index}}" bindtap="selectVideo">
+          <image src="{{item.imgUrl}}" class="addimg"></image>
           上传视频
         </li>
       </ul>

@@ -1,15 +1,20 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="buyList" wx:for="{{array}}" wx:key="id" bindtap="bindVideoShow">
+  <scroll-view scroll-y="true" refresher-enabled="true" bindrefresherrefresh="onPullDownRefresh" refresher-triggered="{{triggered}}" bindscrolltolower="onReachBottom" style="height:{{scrollHeight}}px;" class="list"> 
+    <view class="buyList" wx:for="{{arrayList}}" wx:key="id" bindtap="bindVideoShow"> 
       <image src="{{imgUrl}}" class="peopleImg"></image>
       <h3>{{item.title}}</h3>
       <p>{{item.message}}</p>
       <h5>{{item.price}}</h5>
       <small>{{item.date}}</small>
-    </view>
-    <view class="refresh-block" wx:if="{{loading}}">
-    <image animation="{{refreshAnimation}}" src="../../images/add.png"></image>
-    </view>
+    </view> 
+  </scroll-view> 
+  <view class="body-view"> 
+    <loading hidden="{{hidden}}" bindchange="loadingChange"> 
+      加载中... 
+    </loading> 
+ </view> 
+
 </view>
 <!-- <button class="btn" bindtap="showToastBtn">显示消息提示框(测试)</button>
 <button class="btn" bindtap="showModelBtn">显示模态对话框(测试)</button> -->

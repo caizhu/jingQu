@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="imgBoxFull" bindtap="finishVideo">
+  <button type="primary" bindtap="selectVideo">选择视频</button>
+  <!-- <view class="imgBoxFull" bindtap="finishVideo">
     <image src="{{imgUrl}}" class="fullImg"></image>
-  </view>
+  </view> -->
 </view>

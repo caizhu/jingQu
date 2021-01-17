@@ -4,134 +4,77 @@ const app = getApp()
 import grace from "../../grace/grace.js"
 grace.page({
   data: {
-    array: [{
-      id:1,
-      title:'珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国',
-      message: '珠海长隆海洋王国',
-      price:'10.34',
-      date:'2021-01-10 10:11'
-    }, {
-      id:2,
-      title:'珠海横琴长隆海洋王国珠海横琴长',
-      message: '珠海长隆海洋王国',
-      price:'￥444.34',
-      date:'2021-01-10 10:11'
-    }],
+    hidden: true, 
+    scrollHeight: 0,
+    page:1,
+    arrayList: [],
     imgUrl:'../../images/2.jpg',    
-    refreshAnimation:null
+    refreshAnimation:null,
+    loading:false,
+    triggered:false,
   },
   // 事件处理函数
-  bindVideoShow() {
-    wx.navigateTo({
-      url: '../videoShow/index'
-    })
-  },
   onLoad() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+    let that=this;
+    wx.getSystemInfo({ 
+      success: function (res) { 
+        console.log(res.windowHeight);      
+        that.setData({
+          scrollHeight: res.windowHeight 
+      }); 
+    }
+  })
+},
+onShow: function () { 
+  this.getList(); 
+}, 
+onReachBottom: function () { //滚动到底部/右边时触发
+  this.getList(); 
+}, 
+onPullDownRefresh () { 
+  if (this._freshing) return
+  this._freshing = true
+  this.setData({ 
+    arrayList:[],
+    hidden: false
+  });  
+  setTimeout(() => {
+    this.setData({
+      triggered: false,
+      hidden: true
+    })
+    this.data.arrayList.push({
+      id:0,
+      title:'珠海横琴长隆海洋王国珠',
+      message: '珠海长隆海洋王国',
+      price:'10.34',
+      date:'2021-01-10 10:11'
+    }) 
+    this._freshing = false
+  }, 1000)  
+  }, 
+  getList(){
+    this.setData({ 
+      hidden: false
+    });  
+    for (var i =0; i < 10; i++) { 
+      let a=this.data.arrayList.length;
+      let array=this.data.arrayList;
+      array.push({
+        id:a,
+        title:a+'珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国',
+        message: '珠海长隆海洋王国',
+        price:'10.34',
+        date:'2021-01-10 10:11'
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+      this.setData({
+        arrayList:array
       })
     }
-  },
-  
-  onPullDownRefresh: function () {    
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    let newwords = [{
-      id:3,
-      title:'珠海横琴长国',
-      message: '珠海长隆海洋王国',
-      price:'10.34',
-      date:'2021-01-10 10:11'
-    },{
-      id:3,
-      title:'珠海横琴长国',
-      message: '珠海长隆海洋王国',
-      price:'10.34',
-      date:'2021-01-10 10:11'
-    },{
-      id:3,
-      title:'珠海横琴长国',
-      message: '珠海长隆海洋王国',
-      price:'10.34',
-      date:'2021-01-10 10:11'
-    },{
-      id:3,
-      title:'珠海横琴长国',
-      message: '珠海长隆海洋王国',
-      price:'10.34',
-      date:'2021-01-10 10:11'
-    }].concat(this.data.array);
-    setTimeout( ()=> {
-      this.setData({
-        array: newwords
-      })
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-     }, 2000)
-  },
-  onReachBottom:function(){
-    console.log('hi')
-    // if (this.data.loading) return;
-    this.setData({ loading: true });
-    this.updateRefreshIcon.call(this);
-    var newwords = this.data.array.concat([{
-        id:4,
-        title:'珠海横琴长国',
-        message: '珠海长隆海洋王国',
-        price:'111110.34',
-        date:'2021-01-10 10:11'
-      }
-    ]);
     setTimeout( () =>{
       this.setData({
-       loading: false,
-       array: newwords
+        hidden:true
       })
-    }, 2000)
-   },
-   updateRefreshIcon() {
-    var deg = 0;
-    console.log('旋转开始了.....')
-    var animation = wx.createAnimation({
-     duration: 1000
-    });
-    var timer = setInterval( ()=> {
-     if (!this.data.loading)
-      clearInterval(timer);
-     animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
-     deg += 360;
-     this.setData({
-      refreshAnimation: animation.export()
-     })
-    }, 2000);
-   },
-  getUserInfo(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    }, 2000)    
   }
 })
