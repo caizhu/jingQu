@@ -26,9 +26,17 @@
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <ul class="addList">
-        <li wx:for="{{arrayList}}" wx:key="id" data-index="{{index}}" bindtap="selectVideo">
-          <image src="{{item.imgUrl}}" class="addimg"></image>
-          上传视频
+        <li wx:for="{{arrayList}}" wx:key="id">
+          <view class="addSelect" wx:if="{{item.img==''}}" bindtap="selectVideo" data-index="{{index}}">
+            <image src="{{item.imgUrl}}" class="addimg"></image>
+            上传视频
+          </view>
+          <view class="selectedImg" wx:else>
+            <image src="{{item.img}}" class="imgSize"></image>
+            <text>{{item.duration}}</text>
+            <button class="deleVideo" bindtap="deleVideoBtn" data-index="{{index}}"><image src="../../images/ashbin.png"></image></button>
+          </view>
+          
         </li>
       </ul>
     </view>    

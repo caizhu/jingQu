@@ -15,7 +15,9 @@ grace.page({
         filePath:acceptData,
         success(val){         
           console.log(JSON.stringify(val));
-          // this.finishVideo()
+          //向上个页面返回值
+          eventChannel.emit('acceptDataFromOpenedPage',JSON.stringify(val))
+          wx.navigateBack();
         }
       })
     })
@@ -38,10 +40,4 @@ grace.page({
   //     }
   //   })
   // },
-  finishVideo(val){
-    console.log(val)
-    // wx.navigateTo({
-    //   url: '../video/index'
-    // })
-  }
 })

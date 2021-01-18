@@ -56,24 +56,51 @@
   padding: 15px 0;
 }
 .addList li{
-  width: 100px;
+  width: 120px;
   height: 120px;
-  font-size: 12px;
-  color: #868595;
+  font-size: 12px;  
   border-radius: 10px;
   margin:0 10px 10px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  background: #fff;
-  text-align: center;
-  padding:17px 0;
   float: left;
 }
+.addSelect{
+  padding: 17px 0;
+  text-align: center;
+  background: #fff;
+  color: #868595;
+} 
 .addList .addimg{
   width: 36px;
   height:36px;
   display: block;
   margin: 10px auto;
+}
+.selectedImg .imgSize{
+  width: 100px;
+  height: 120px;
+}
+.selectedImg text{
+  font-size: 12px;
+  color: #fff;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-shadow:0 0 6px rgba(0, 0, 0,0.4);
+}
+button.deleVideo{
+  width: 38px !important;
+  height: 38px;
+  padding: 10px;
+  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.deleVideo image{
+  width: 18px !important;
+  height: 18px;
 }
 .submitBox{
  width: 100%;
