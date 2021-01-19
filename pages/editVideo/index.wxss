@@ -1,8 +1,0 @@
-/**index.wxss**/
-.imgBoxFull{
-  width: 100%;
-}
-.imgBoxFull .fullImg{
-  width: 100%;
-  height: 600px;
-}

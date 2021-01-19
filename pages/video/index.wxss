@@ -78,7 +78,7 @@
   margin: 10px auto;
 }
 .selectedImg .imgSize{
-  width: 100px;
+  width: 120px;
   height: 120px;
 }
 .selectedImg text{

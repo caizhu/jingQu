@@ -14,7 +14,8 @@ Page({
       duration:0,
       videoUrl:''
     }],
-    videoNumVal:null
+    videoNumVal:null,
+    finishVideoUrl:{"errCode":0,"errMsg":"openVideoEditor:ok","tempFilePath":"wxfile://clientdata/1610986560945.open_editor_video.mp4","tempThumbPath":"wxfile://clientdata/1610986560945.open_editor_thumb.jpg","duration":4156,"durationUs":4156000,"durationMs":4156,"durationS":4,"size":1114165}
   },
   onLoad: function (option) {
   },
@@ -44,38 +45,53 @@ Page({
       compressed:false,
       success(res) {        
         let videoUrl= res.tempFilePath;
-        wx.navigateTo({
-          url: '../editVideo/index',
-          events: {
-            // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-            acceptDataFromOpenedPage: function(data) {            
-              let list=JSON.parse(data);
-              console.log('传送到当前页面的数据'+data)
-              // 传送到当前页面的数据{"errCode":0,"errMsg":"openVideoEditor:ok","tempFilePath":"wxfile://clientdata/1610986560945.open_editor_video.mp4","tempThumbPath":"wxfile://clientdata/1610986560945.open_editor_thumb.jpg","duration":4156,"durationUs":4156000,"durationMs":4156,"durationS":4,"size":1114165}
-              const state = "arrayList["+key+"].img"
-              const dur = "arrayList["+key+"].duration"
-              that.setData({
-                [state]:list.tempThumbPath,
-                [dur]:list.durationS
-              })
-            }
-          },
-          success: function (result) {
-            console.log('视频地址'+JSON.stringify(videoUrl));
-            result.eventChannel.emit('sendVideoUrlToNext', { data: videoUrl})
-          }
-        })
+        that.editVideo(videoUrl,key)        
+      }
+    })
+  },
+ editVideo(filePath,key){
+    let that=this
+    wx.openVideoEditor({
+      filePath:filePath,
+      success(val){         
+        console.log(JSON.stringify(val));    
+        that.setData({
+          finishVideoUrl:JSON.stringify(val)
+        })            
+        // 传送到当前页面的数据{"errCode":0,"errMsg":"openVideoEditor:ok","tempFilePath":"wxfile://clientdata/1610986560945.open_editor_video.mp4","tempThumbPath":"wxfile://clientdata/1610986560945.open_editor_thumb.jpg","duration":4156,"durationUs":4156000,"durationMs":4156,"durationS":4,"size":1114165}
+        if(val.durationS>10){
+          wx.showModal({
+              title: '提示',
+              content: '视频时长大于10，请重新剪辑',
+              success (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                  // that.selectVideo();
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
+            })
+        }else{
+          const state = "arrayList["+key+"].img"
+          const dur = "arrayList["+key+"].duration"
+          const videoUrl = "arrayList["+key+"].videoUrl"
+          that.setData({
+            [state]:val.tempThumbPath,
+            [dur]:val.durationS,
+            [videoUrl]:val.tempFilePath
+          })
+        }          
       }
     })
   },
   goToMakeVideo(){
-    wx.showToast({
-      title: '正在玩命制作中',
-      icon: 'loading',
-      duration: 3000
-    });
+    let that=this
     wx.navigateTo({
-      url: '../videoShow/index'
+       url: '../videoShow/index',
+       success: function (result) {
+          result.eventChannel.emit('sendVideoUrlFinish', { data:JSON.stringify(that.data.finishVideoUrl)})
+        }
     })
   }
 })
