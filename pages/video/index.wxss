@@ -59,11 +59,12 @@
   width: 120px;
   height: 120px;
   font-size: 12px;  
-  border-radius: 10px;
+  border-radius: 6px;
   margin:0 10px 10px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   float: left;
+  overflow: hidden;
 }
 .addSelect{
   padding: 17px 0;
@@ -72,8 +73,8 @@
   color: #868595;
 } 
 .addList .addimg{
-  width: 36px;
-  height:36px;
+  width: 30px;
+  height:30px;
   display: block;
   margin: 10px auto;
 }

@@ -76,5 +76,10 @@ onPullDownRefresh () {
         hidden:true
       })
     }, 2000)    
+  },
+  goToVideoShow: function () {
+    wx.navigateTo({
+      url: '../videoShow/index'
+    })
   }
 })

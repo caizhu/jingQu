@@ -34,12 +34,14 @@ h5{
 }
 .btn{
   width: 100% !important;
-  height: 40px;
+  height: 44px;
+  line-height: 44px;
+  padding: 0;
   font-weight: normal;
   font-size: 14px;
   color: #fff;
   display: block;
-  border-radius: 10px;
+  border-radius: 22px;
   position: relative;
   background: -webkit-linear-gradient(left,#345dfb, #3becf2); /* Safari 5.1 - 6.0 */ 
   background: -o-linear-gradient(right,#345dfb, #3becf2); /* Opera 11.1 - 12.0 */ 
@@ -87,7 +89,7 @@ button.shareBtn{
   font-size: 13px;
   line-height: 24px;
   z-index: 2;
-  padding:0 20px;
+  padding:0 15px;
   width: 100%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;

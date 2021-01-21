@@ -93,5 +93,16 @@ Page({
           result.eventChannel.emit('sendVideoUrlFinish', { data:JSON.stringify(that.data.finishVideoUrl)})
         }
     })
+  },
+  onShareAppMessage (res) {  //转发给朋友
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '../beShared/index',
+      imageUrl:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3871678567,2844469471&fm=26&gp=0.jpg'
+    }
   }
 })
