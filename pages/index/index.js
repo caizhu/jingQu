@@ -7,7 +7,15 @@ Page({
     imgUser:'../../images/user.png'
   },
   onLoad() {
+    console.log('aaaaaaaaa'+app.globalData.api)
+    app.post.request('api', {
+      pageNum: 1,
+      type: 0,
+    }).then(res => {
+      console.log('responent', res)        
+    })
   },
+  
   // 事件处理函数
   doVideo: function () {
     wx.navigateTo({
