@@ -1,0 +1,25 @@
+/**index.wxss**/
+.ibox{
+  padding: 20% 40px 10px 10%;
+  box-shadow: none;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 30px;
+}
+.ibox .logoImg{
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  border:1px solid #eee;
+  margin: 0 auto;
+  display: block;
+}
+.ibox .btn{
+  margin: 40% 0 10px 0;
+}
+.ibox h3{
+  font-size: 20px;
+  color: #202020;
+  margin-top: 22px;
+}

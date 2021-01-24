@@ -1,6 +1,7 @@
 {
-  "pages":[  
+  "pages":[     
     "pages/index/index",   
+    "pages/login/index",   
     "pages/videoShow/index", 
     "pages/video/index", 
     "pages/buyList/index",  

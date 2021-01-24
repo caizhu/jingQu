@@ -1,20 +1,31 @@
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    console.log('初始化')
     // 登录
     wx.login({
       success: res => {
+        console.log('login'+JSON.stringify(res))
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: 'http://119.45.195.136:8000/api/appUser/wxLogin',
+          method: 'POST',
+          header: {
+            'content-type': 'application/json'
+          },
+          data:{
+            wxCode:res.code
+          },
+          success: suc => {
+            console.log('login'+JSON.stringify(suc))
+          }
+        })
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        console.log('getSetting'+JSON.stringify(res))
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -32,8 +43,5 @@ App({
         }
       }
     })
-  },
-  globalData: {
-    userInfo: null
   }
 })
