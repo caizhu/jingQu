@@ -4,9 +4,11 @@ export default class Post {
     let app = getApp(),
       url = `${app.globalData.api}${path}`,
       header = {
-        token: wx.getStorageSync('user').token || '',
-        'content-type': 'application/x-www-form-urlencoded'
+        'Authorization': wx.getStorageSync('token') || '',
+        'content-type':'application/json'
+        // 'content-type': 'application/x-www-form-urlencoded'
       }
+      console.log('header值：'+JSON.stringify(header))
     var promise = new Promise((resolve, reject) => {
       wx.request({
         url: url,
@@ -14,7 +16,7 @@ export default class Post {
         method: "POST",
         header: header,
         success(res) {
-          console.log('res 响应拦截', res.data.code)
+          console.log('res 响应拦截', res)
           if (res.data.code == 17000) {
             wx.showModal({
               title: '提示',

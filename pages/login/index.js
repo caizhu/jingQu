@@ -9,10 +9,14 @@ Page({
     lang: 'zh_CN'
   },
   // 事件处理函数
-  loginSuccess: function (res) {
-    console.log(res.detail);
+  onLoad() {
+    console.log('err')
+    
   },
-  loginFail: function (res) {
-    console.log(res);
-  }
+  // loginSuccess: function (res) {
+  //   console.log(res.detail);
+  // },
+  // loginFail: function (res) {
+  //   console.log(res);
+  // }
 })

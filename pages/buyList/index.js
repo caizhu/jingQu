@@ -1,9 +1,9 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-import grace from "../../grace/grace.js"
-grace.page({
+Page({
   data: {
+    userToken:'a',
     hidden: true, 
     scrollHeight: 0,
     page:1,
@@ -17,13 +17,12 @@ grace.page({
   onLoad() {
     let that=this;
     wx.getSystemInfo({ 
-      success: function (res) { 
-        console.log(res.windowHeight);      
+      success: function (res) {     
         that.setData({
           scrollHeight: res.windowHeight 
       }); 
-    }
-  })
+     }
+    });      
 },
 onShow: function () { 
   this.getList(); 
@@ -53,7 +52,10 @@ onPullDownRefresh () {
     this._freshing = false
   }, 1000)  
   }, 
-  getList(){
+  getList(){         
+    app.post.request('/api/appOperation/myOrders', {}).then(res => {
+        console.log('responent', res)
+    })
     this.setData({ 
       hidden: false
     });  

@@ -6,17 +6,15 @@ Page({
     imgUrl:'../../images/1.jpg',
     imgUser:'../../images/user.png'
   },
-  onLoad() {
-    console.log('aaaaaaaaa'+app.globalData.api)
-    app.post.request('api', {
-      pageNum: 1,
-      type: 0,
+  onLoad(options) {
+    var url = decodeURIComponent(options.q); //扫普通链接二维码打开小程序
+    app.post.request('/api/appOperation/areaIndex', {
+      areaCode:url
     }).then(res => {
-      console.log('responent', res)        
-    })
+      console.log('首页responent', res)
+  })
   },
-  
-  // 事件处理函数
+   // 事件处理函数
   doVideo: function () {
     wx.navigateTo({
       url: '../video/index',

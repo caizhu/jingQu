@@ -1,8 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-    <view class="videoBox" bindtap="startVideoShow">    
-    <image src="{{imgUrl}}"></image>
-    </view>
-</view>
-<!-- <button class="btn" bindtap="showToastBtn">显示消息提示框(测试)</button>
-<button class="btn" bindtap="showModelBtn">显示模态对话框(测试)</button> -->
