@@ -1,7 +1,18 @@
 <!--index.wxml-->
 <view class="container">
     <view class="headerbox">
-      <image src="{{imgUrl}}" style="width:100%;height:100%"></image>
+      <video 
+        id="myVideo" 
+        src="https://shengshiyunyou.oss-cn-guangzhou.aliyuncs.com/template/vid_01001.mp4" 
+        binderror="videoErrorCallback" 
+        show-center-play-btn='{{true}}' 
+        show-play-btn="{{true}}" 
+        controls
+        poster="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3871678567,2844469471&fm=26&gp=0.jpg"
+        object-fit="cover"
+        picture-in-picture-mode="{{['push', 'pop']}}"
+        style="width:100%;height:240px"
+      ></video>
       <view class="textCon">
         <h2>珠海横琴长隆海洋王国</h2>
         <p>八大主题区，集各类珍稀海洋动物展馆、动感游乐设施、3...</p>

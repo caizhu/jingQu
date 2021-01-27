@@ -14,6 +14,9 @@ Page({
       console.log('首页responent', res)
   })
   },
+  onReady() {
+    this.videoContext = wx.createVideoContext('myVideo')
+  },
    // 事件处理函数
   doVideo: function () {
     wx.navigateTo({

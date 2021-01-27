@@ -1,7 +1,8 @@
 {
   "pages":[    
-    "pages/buyList/index",  
     "pages/index/index",    
+    "pages/buyList/index",  
+   
     "pages/login/index",   
     "pages/videoShow/index", 
     "pages/video/index", 
