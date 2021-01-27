@@ -30,5 +30,10 @@ Page({
         res.eventChannel.emit('videoListRow', { data: 'send from opener page1111' })
       }
     })
+  },
+  goToUserCenter(){
+    wx.navigateTo({
+      url: '../myCenter/index'
+    })
   }
 })

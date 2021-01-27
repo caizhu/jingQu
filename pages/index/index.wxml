@@ -8,15 +8,15 @@
         show-center-play-btn='{{true}}' 
         show-play-btn="{{true}}" 
         controls
-        poster="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3871678567,2844469471&fm=26&gp=0.jpg"
+        poster="http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/20190621/9ee88d8ab0b941a1b9458381034e68ce.jpg"
         object-fit="cover"
         picture-in-picture-mode="{{['push', 'pop']}}"
         style="width:100%;height:240px"
       ></video>
-      <view class="textCon">
+      <!-- <view class="textCon">
         <h2>珠海横琴长隆海洋王国</h2>
         <p>八大主题区，集各类珍稀海洋动物展馆、动感游乐设施、3...</p>
-      </view>  
+      </view>   -->
       <button class="btn" bindtap="goToUserCenter" class="toUserCenter">
         <image src="{{imgUser}}" style="width:100%;height:100%"></image>
       </button>  
@@ -27,17 +27,17 @@
       <rich-text>告别单调，自己也可以制作大师视频！</rich-text>    
     </view>
     <view class="ibox">
-      <image src="{{imgUrl}}" style="width:100%;height:180px;"></image>
+      <image src="http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/20190701/0b5854f979fe4e85a59111cb486a708f.jpg" style="width:100%;height:180px;"></image>
       <view class="contentList">
-          <h3>海洋馆·我和白鲸一起飞跃海洋馆·我和白鲸一起飞跃</h3>
+          <h3>老船长BBQ</h3>
           <h5>￥66.22</h5>
           <button class="btn" bindtap="doVideo">我也要拍</button>
       </view>
     </view>
     <view class="ibox">
-      <image src="{{imgUrl}}" style="width:100%;height:180px;"></image>
+      <image src="http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/2019-07-11/78829e1b5d9348fe8c57477c0079d3ec_20190711102958.jpg" style="width:100%;height:180px;"></image>
       <view class="contentList">
-          <h3>海洋馆·我和白鲸一起飞跃海洋馆·我和白鲸一起飞跃</h3>
+          <h3>让我们将快乐定格在星乐度</h3>
           <h5>￥66.22</h5>
           <button class="btn" bindtap="doVideo">我也要拍</button>
       </view>

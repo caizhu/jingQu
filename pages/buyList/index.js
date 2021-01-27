@@ -8,7 +8,7 @@ Page({
     scrollHeight: 0,
     page:1,
     arrayList: [],
-    imgUrl:'../../images/2.jpg',    
+    imgUrl:'http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/2019-07-08/377154b31f8f49d79fd7de0fbfe8529e_20190708162243.png',    
     refreshAnimation:null,
     loading:false,
     triggered:false,
@@ -44,8 +44,8 @@ onPullDownRefresh () {
     })
     this.data.arrayList.push({
       id:0,
-      title:'珠海横琴长隆海洋王国珠',
-      message: '珠海长隆海洋王国',
+      title:'珠海横琴星乐度●露营小镇',
+      message: '星奇塔无动力世界',
       price:'10.34',
       date:'2021-01-10 10:11'
     }) 
@@ -64,8 +64,8 @@ onPullDownRefresh () {
       let array=this.data.arrayList;
       array.push({
         id:a,
-        title:a+'珠海横琴长隆海洋王国珠海横琴长隆海洋王国珠海横琴长隆海洋王国',
-        message: '珠海长隆海洋王国',
+        title:'珠海横琴星乐度●露营小镇海横琴长隆海洋王国珠海横琴长隆海洋王国',
+        message: '星奇塔无动力世界',
         price:'10.34',
         date:'2021-01-10 10:11'
       })
