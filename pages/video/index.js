@@ -38,11 +38,12 @@ Page({
     let that=this;
     // 绑定方法中传过来的参数值 //用于设置第几个视频
     let key=event.currentTarget.dataset.index;    
-    wx.chooseVideo({
-      sourceType: ['album','camera'],
-      maxDuration: 60,
+    wx.chooseMedia({
+      count: 9,
+      mediaType: ['image','video'],
+      sourceType: ['album', 'camera'],
+      maxDuration: 30,
       camera: ['front', 'back'],
-      compressed:false,
       success(res) {        
         let videoUrl= res.tempFilePath;
         that.editVideo(videoUrl,key)        
@@ -66,7 +67,6 @@ Page({
               success (res) {
                 if (res.confirm) {
                   console.log('用户点击确定')
-                  // that.selectVideo();
                 } else if (res.cancel) {
                   console.log('用户点击取消')
                 }

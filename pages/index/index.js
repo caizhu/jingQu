@@ -7,12 +7,12 @@ Page({
     imgUser:'../../images/user.png'
   },
   onLoad(options) {
-    var url = decodeURIComponent(options.q); //扫普通链接二维码打开小程序
-    app.post.request('/api/appOperation/areaIndex', {
-      areaCode:url
-    }).then(res => {
-      console.log('首页responent', res)
-  })
+    // var url = decodeURIComponent(options.q); //扫普通链接二维码打开小程序
+  //   app.post.request('/api/appOperation/areaIndex', {
+  //     areaCode:url
+  //   }).then(res => {
+  //     console.log('首页responent', res)
+  // })
   },
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo')

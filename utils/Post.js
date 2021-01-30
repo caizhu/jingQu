@@ -2,9 +2,11 @@ export default class Post {
   constructor() { } 
   request = (path, data) => {
     let app = getApp(),
-      url = `${app.globalData.api}${path}`,
-      header = {
-        'Authorization': wx.getStorageSync('token') || '',
+      url = `${app.globalData.api}${path}`
+      let tokenVal=`Bearer ${wx.getStorageSync('token')}`
+      console.log('tokenVal:'+tokenVal)
+      let header = { 
+        'Authorization':tokenVal,
         'content-type':'application/json'
         // 'content-type': 'application/x-www-form-urlencoded'
       }

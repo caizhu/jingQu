@@ -1,12 +1,11 @@
 {
   "pages":[    
-    "pages/index/index",    
-    "pages/buyList/index",  
-   
     "pages/login/index",   
+    "pages/beShared/index", 
+    "pages/index/index",    
+    "pages/buyList/index",   
     "pages/videoShow/index", 
     "pages/video/index", 
-    "pages/beShared/index", 
     "pages/myCenter/index"
   ],
   "window":{
