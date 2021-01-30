@@ -1,23 +1,24 @@
 // index.js
 // 获取应用实例
-const app = getApp()
-Page({
-  data: {
+import grace from '../../utils/grace'
+import api from '../../utils/api'
+
+grace.page({
+  data:{
     imgUrl:'../../images/1.jpg',
     imgUser:'../../images/user.png'
   },
-  onLoad(options) {
-    // var url = decodeURIComponent(options.q); //扫普通链接二维码打开小程序
-  //   app.post.request('/api/appOperation/areaIndex', {
-  //     areaCode:url
-  //   }).then(res => {
-  //     console.log('首页responent', res)
-  // })
+  onLoad(){
+    this.queryData()
   },
-  onReady() {
-    this.videoContext = wx.createVideoContext('myVideo')
+  queryData(){
+    this.$http.post(api.appOperation.areaIndex,{
+      areaCode:'changlong'
+    }).then(res=>{
+      console.log(res)
+    })
   },
-   // 事件处理函数
+  // 事件处理函数
   doVideo: function () {
     wx.navigateTo({
       url: '../video/index',
@@ -33,7 +34,7 @@ Page({
   },
   goToUserCenter(){
     wx.navigateTo({
-      url: '../myCenter/index'
+      url: '/pages/myCenter/index'
     })
   }
 })

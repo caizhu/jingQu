@@ -1,19 +1,19 @@
 <!--index.wxml-->
-<view class="container">    
+<view class="container">
     <view class="ibox">
       <image src="{{imgUrl}}" class="logoImg"></image>
-      <h3>长隆视频制作</h3>
-      <button class="btn" bindtap="doVideo">微信授权登录</button>
+      <h3>盛世云游视频</h3>
+      <button class="btn" bindtap="doVideo" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandler">微信授权登录</button>
       <p>温馨提醒：未注册用户，首次登录将完成注册</p>
 
-      <functional-page-navigator
-        name="loginAndGetUserInfo"
-        args="{{ args }}"
-        version="develop"
-        bind:success="loginSuccess"
-        bind:fail="loginFail"
-      >
-        <button class="login">登录到插件</button>
-      </functional-page-navigator>
+<!--      <functional-page-navigator-->
+<!--        name="loginAndGetUserInfo"-->
+<!--        args="{{ args }}"-->
+<!--        version="develop"-->
+<!--        bind:success="loginSuccess"-->
+<!--        bind:fail="loginFail"-->
+<!--      >-->
+<!--        <button class="login">登录到插件</button>-->
+<!--      </functional-page-navigator>-->
   </view>
 </view>

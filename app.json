@@ -1,18 +1,18 @@
 {
-  "pages":[    
-    "pages/login/index",   
-    "pages/beShared/index", 
-    "pages/index/index",    
-    "pages/buyList/index",   
-    "pages/videoShow/index", 
-    "pages/video/index", 
+  "pages":[
+    "pages/index/index",
+    "pages/login/index",
+    "pages/beShared/index",
+    "pages/buyList/index",
+    "pages/videoShow/index",
+    "pages/video/index",
     "pages/myCenter/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "景区视频",
-    "navigationBarTextStyle":"black"        
+    "navigationBarTitleText": "盛世云游视频",
+    "navigationBarTextStyle":"black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
