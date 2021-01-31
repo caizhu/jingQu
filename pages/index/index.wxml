@@ -29,7 +29,7 @@
         <view class="contentList">
             <h3>{{item.templateName}}</h3>
             <h5>￥{{item.publicPrice}}</h5>
-            <button class="btn" bindtap="videoHandler" data-id="{{item.areaId}}">我也要拍</button>
+            <button class="btn" bindtap="videoHandler" data-id="{{item.templateId}}">我也要拍</button>
         </view>
       </view>
     </block>

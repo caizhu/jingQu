@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="buyList" wx:for="{{orderList}}" wx:key="id" bindtap="goToVideoShow"> 
+    <view class="buyList" wx:for="{{orderList}}" wx:key="id" bindtap="goToVideoShow" data-id="{{item.templateId}}"> 
       <image src="{{item.areaMainImageUrl}}" class="peopleImg"></image>
       <h3>{{item.templateName}}</h3>
       <p>{{item.areaName}}</p>

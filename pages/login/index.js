@@ -7,19 +7,24 @@ import api from '../../utils/api'
 grace.page({
   data:{
     imgUrl:'../../images/1.jpg',
+    user:null
   },
-  onLoad(){},
+  onLoad(){
+    this.$data.getStorageSync('user')
+  },
   getUserInfoHandler(e){
     const detail = e.detail
-    console.log(detail)
     this.$http.post(api.appUser.getWxInfo,{
-      sessionKey:wx.getStorageSync('sessionKey'),
+      sessionKey:user.sessionKey,
       encryptedData:detail.encryptedData,
       iv:detail.iv,
-      openId:wx.getStorageSync('openId')
+      openId:this.$data.user.openId
     }).then(res=>{
       console.log(res)
     })
+  },
+  getPhoneNumberHandler(){
+
   }
 })
 

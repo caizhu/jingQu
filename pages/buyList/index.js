@@ -18,9 +18,10 @@ grace.page({
       wx.stopPullDownRefresh()
     })
   },
-  goToVideoShow(){
+  goToVideoShow(e){
+    const id = e.currentTarget.id
     wx.navigateTo({
-      url: '/pages/videoShow/index',
+      url: '/pages/video/index?id='+id
     })
   }
 })

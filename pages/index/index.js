@@ -3,6 +3,7 @@
 import grace from '../../utils/grace'
 import api from '../../utils/api'
 
+const app = getApp()
 grace.page({
   data:{
     imgUrl:'../../images/1.jpg',
@@ -37,8 +38,10 @@ grace.page({
     })
   },
   goToUserCenter(){
-    wx.navigateTo({
-      url: '/pages/myCenter/index'
-    })
+    if(app.checkLoginStatus()){
+      wx.navigateTo({
+        url: '/pages/myCenter/index'
+      })
+    }
   }
 })
