@@ -1,49 +1,45 @@
 <!--index.wxml-->
 <view class="container">
   <view class="myVideoSection">
-    <video 
-      id="myVideo" 
-      src="https://shengshiyunyou.oss-cn-guangzhou.aliyuncs.com/template/exp_01001.mp4" 
-      binderror="videoErrorCallback" 
-      show-center-play-btn='{{true}}' 
-      show-play-btn="{{true}}" 
-      controls
-      poster="http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/20190621/d8b69e8fd82d4ecd80d6a6ded9c1fe99.jpg"
-      object-fit="cover"
-      picture-in-picture-mode="{{['push', 'pop']}}"
-      style="width:100%;height:240px"
-    ></video>    
-  </view>  
+    <video src="{{detail.guestVideoUrl}}"
+    autoplay="true"
+      poster="{{detail.mainImageUrl}}"
+      object-fit="cover" picture-in-picture-mode="{{['push', 'pop']}}" style="width:100%;height:240px"></video>
+  </view>
   <view class="mainbox headerbox">
-    <h3>星奇塔无动力世界位于珠海横琴星乐度●露营小镇</h3>
-    <p>星奇塔无动力世界</p>
-    <p>时长：45秒</p>
-    <p>需上传视频：3段</p>
-    <h5>￥431.21</h5>
-    <button class=" btn shareBtn" open-type="share" bindtap="onShareAppMessage"> <image src="../../images/share.png"></image>分享</button>
-  </view>   
+    <h3>{{detail.templateName}}</h3>
+    <rich-text nodes="{{detail.templateDesc}}"></rich-text>
+    <p>时长：{{detail.videoDuration}}秒</p>
+    <p>需上传视频：{{detail.videoPart}}段</p>
+    <h5>￥{{detail.publicPrice}}</h5>
+    <button class=" btn shareBtn" open-type="share" bindtap="onShareAppMessage">
+      <image src="../../images/share.png"></image>分享
+    </button>
+  </view>
   <view class="mainbox">
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <ul class="addList">
-        <li wx:for="{{arrayList}}" wx:key="id">
-          <view class="addSelect" wx:if="{{item.img==''}}" bindtap="selectVideo" data-index="{{index}}">
-            <image src="{{item.imgUrl}}" class="addimg"></image>
+        <li wx:for="{{videoPartList}}" wx:key="index">
+          <view class="addSelect" bindtap="chooseVideoHandler" wx:if="{{item.partType === 0}}">
+            <image src="../../images/add.png" class="addimg"></image>
             上传视频
           </view>
-          <view class="selectedImg" wx:else>
-            <image src="{{item.img}}" class="imgSize"></image>
+          <view class="selectedImg" wx:elif="{{item.partType === 1}}">
+            <video src="{{item.sourceVideoUrl}}" class="imgSize" poster="{{item.mainImageUrl}}"></video>
             <text>{{item.duration}}</text>
-            <button class="deleVideo" bindtap="deleVideoBtn" data-index="{{index}}"><image src="../../images/ashbin.png"></image></button>
+            <button class="deleVideo" bindtap="deleVideoBtn" data-index="{{index}}">
+              <image src="../../images/ashbin.png"></image>
+            </button>
           </view>
         </li>
       </ul>
-    </view>    
+    </view>
     <view class="submitBox">
       <label class="radio">
-        <radio value="r1" checked="true"/>我已阅读并同意<a>《视频制作协议》</a>
+        <radio value="r1" checked="true" />我已阅读并同意<a>《视频制作协议》</a>
       </label>
-      <button class="btn" bindtap="goToMakeVideo">开始制作</button>
+      <button class="btn" bindtap="makeVideoHandler">开始制作</button>
+    </view>
   </view>
-</view>  
 </view>

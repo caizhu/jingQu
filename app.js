@@ -10,8 +10,7 @@ App({
                 loginCode:res.code
             }).then((r)=>{
                 wx.setStorageSync('token',r.userToken)
-                wx.setStorageSync('sessionKey',r.sessionKey)
-                wx.setStorageSync('openId',r.openId)
+                wx.setStorageSync('user',r)
             })
         }
     })

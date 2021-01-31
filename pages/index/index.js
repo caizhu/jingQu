@@ -6,30 +6,34 @@ import api from '../../utils/api'
 grace.page({
   data:{
     imgUrl:'../../images/1.jpg',
-    imgUser:'../../images/user.png'
+    imgUser:'../../images/user.png',
+    areaData: {
+      appTemplateVOList:[],
+      areaAdVo: null,
+      areaAdVoList:[],
+      areaVo:null
+    }
   },
   onLoad(){
-    this.queryData()
+    const interval = setInterval(()=>{
+      if(wx.getStorageSync('token')){
+        clearInterval(interval)
+        this.queryData()
+      }
+    },100)
   },
   queryData(){
-    this.$http.post(api.appOperation.areaIndex,{
-      areaCode:'changlong'
+    this.$http.get(api.appOperation.areaIndex,{
+      areaCode:'abcd'
     }).then(res=>{
-      console.log(res)
+      this.$data.areaData = res
     })
   },
   // 事件处理函数
-  doVideo: function () {
+  videoHandler: function (e) {
+    const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../video/index',
-      events: {
-        acceptDataFromOpenedPage: function (data) {
-          console.log(data)
-        },
-      },
-      success: function (res) {
-        res.eventChannel.emit('videoListRow', { data: 'send from opener page1111' })
-      }
+      url: `/pages/video/index?id=${id}`
     })
   },
   goToUserCenter(){

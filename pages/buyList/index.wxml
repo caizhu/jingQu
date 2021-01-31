@@ -1,17 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  <scroll-view scroll-y="true" refresher-enabled="true" bindrefresherrefresh="onPullDownRefresh" refresher-triggered="{{triggered}}" bindscrolltolower="onReachBottom" style="height:{{scrollHeight}}px;" class="list"> 
-    <view class="buyList" wx:for="{{arrayList}}" wx:key="id" bindtap="goToVideoShow"> 
-      <image src="{{imgUrl}}" class="peopleImg"></image>
-      <h3>{{item.title}}</h3>
-      <p>{{item.message}}</p>
-      <h5>{{item.price}}</h5>
-      <small>{{item.date}}</small>
+    <view class="buyList" wx:for="{{orderList}}" wx:key="id" bindtap="goToVideoShow"> 
+      <image src="{{item.areaMainImageUrl}}" class="peopleImg"></image>
+      <h3>{{item.templateName}}</h3>
+      <p>{{item.areaName}}</p>
+      <h5>{{item.orderPrice}}</h5>
+      <small>{{item.orderDate}}</small>
     </view> 
-  </scroll-view> 
-  <view class="body-view"> 
-    <loading hidden="{{hidden}}" bindchange="loadingChange"> 
-      加载中... 
-    </loading> 
- </view> 
 </view>

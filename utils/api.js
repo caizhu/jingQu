@@ -4,6 +4,9 @@ export default {
         getWxInfo:'/api/appUser/getWxInfo'
     },
     appOperation:{
-        areaIndex:'/api/appOperation/areaIndex'
+        areaIndex:'/api/appOperation/areaIndex',
+        queryTemplate:'/api/appOperation/queryTemplate',
+        myOrders:'/api/appOperation/myOrders',
+        buyTemplate:'/api/appOperation/buyTemplate'
     }
 }

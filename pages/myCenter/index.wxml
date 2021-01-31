@@ -1,9 +1,11 @@
 <!--index.wxml-->
 <view class="container">
   <view class="peopleHeader">
-    <image src="{{peopleImg}}" class="peopleImg"></image>
-    <h3>肖战DAYTOY</h3>
-    <p>186****123</p>
+    <View class="peopleImg">
+      <open-data type="userAvatarUrl"></open-data>
+    </View>
+    <h3>{{user.nickName}}</h3>
+    <p>{{user.userTel}}</p>
   </view>
   <ul class="funList">
     <li bindtap="goToBuyList">

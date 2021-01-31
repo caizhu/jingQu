@@ -5,8 +5,8 @@
   font-size: 13px;
   color:#fff;
   padding: 30px 0;
-  background: -webkit-linear-gradient(left,#345dfb, #3becf2); /* Safari 5.1 - 6.0 */ 
-  background: -o-linear-gradient(right,#345dfb, #3becf2); /* Opera 11.1 - 12.0 */ 
+  background: -webkit-linear-gradient(left,#345dfb, #3becf2); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right,#345dfb, #3becf2); /* Opera 11.1 - 12.0 */
   background: -moz-linear-gradient(right,#345dfb, #3becf2); /* Firefox 3.6 - 15 */
   background: linear-gradient(right,#345dfb, #3becf2); /* 标准的语法 */
   border-bottom-left-radius: 20px;
@@ -20,6 +20,7 @@
   margin: 0 auto;
   display: block;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 .peopleHeader h3{
   color: #fff;
