@@ -84,8 +84,10 @@ grace.page({
     })
   },
   makeVideoHandler() {
+    const that = this
     if (app.checkLoginStatus()) {
-      const that = this
+
+
       if (this.$data.detail.orderStatus === 0 && this.$data.detail.publicPrice > 0) {
         this.$http.get(api.appOperation.buyTemplate, {
           templateId: this.$data.id
@@ -115,52 +117,66 @@ grace.page({
             fail(err) {
               console.log(err)
               wx.showToast({
-                title: '支付失败'
+                title: '支付失败',
+                icon:'none'
               })
             }
           })
         })
       } else {
-        wx.requestSubscribeMessage({
-          tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
-          success(res) {
-            wx.showLoading({
-              title: '上传中',
-              icon:'loading'
-            })
-            let videoArray = []
-            console.log('已购买')
-            Promise.all(
-              that.$data.videoPartList.map(item => {
-                return new Promise(async (resolve, reject) => {
-                  if (item.partType === 1) {
-                    const sourceVideoUrl = item.sourceVideoUrl
-                    const fileName = await that.getUploadSign(sourceVideoUrl)
-                    videoArray.push({
-                      duration: Number(item.duration),
-                      videoPartId: item.partId,
-                      videoUrl: fileName
-                    })
-                  }
-                  resolve()
+        try {
+          this.$data.videoPartList.forEach(item => {
+            if (item.partType === 1 && !item.sourceVideoUrl) {
+              throw new Error(item.partName)
+            }
+          })
+          wx.requestSubscribeMessage({
+            tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
+            success(res) {
+              wx.showLoading({
+                title: '上传中',
+                icon: 'loading'
+              })
+              let videoArray = []
+              console.log('已购买')
+              Promise.all(
+                that.$data.videoPartList.map(item => {
+                  return new Promise(async (resolve, reject) => {
+                    if (item.partType === 1) {
+                      const sourceVideoUrl = item.sourceVideoUrl
+                      const fileName = await that.getUploadSign(sourceVideoUrl)
+                      videoArray.push({
+                        duration: Number(item.duration),
+                        videoPartId: item.partId,
+                        videoUrl: fileName
+                      })
+                    }
+                    resolve()
+                  })
+                })
+              ).then(() => {
+                that.$http.post(api.appOperation.submitVideoPart, {
+                  userVideoPart: videoArray.length,
+                  orderId: that.$data.detail.orderId,
+                  userVideoPartVOList: videoArray
+                }).then(res => {
+                  wx.hideLoading()
+                  wx.navigateTo({
+                    url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}&areaId=${that.$data.detail.areaId}`,
+                  })
                 })
               })
-            ).then(() => {
-              that.$http.post(api.appOperation.submitVideoPart, {
-                userVideoPart: videoArray.length,
-                orderId: that.$data.detail.orderId,
-                userVideoPartVOList: videoArray
-              }).then(res => {
-                wx.hideLoading()
-                wx.navigateTo({
-                  url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}&areaId=${that.$data.detail.areaId}`,
-                })
-              })
-            })
-          }
-        })
+            }
+          })
+        } catch (e) {
+          wx.showToast({
+            title: `请上传的视频`,
+            icon:'none'
+          })
+        }
       }
     }
+
   },
   deleVideoHandler(e) {
     const index = e.currentTarget.dataset.index

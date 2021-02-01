@@ -4,7 +4,7 @@
       <image src="{{imgUrl}}" class="logoImg"></image>
       <h3>盛世云游视频</h3>
       <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandler" wx:if="{{!user || !user.nickName}}">微信授权登录</button>
-      <button class="btn" open-type="getPhoneNumber" bindgetuserinfo="getPhoneNumberHandler" wx:if="{{!user.userTel}}">获取手机号码</button>
+      <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberHandler" wx:elif="{{!user.userTel}}">获取手机号码</button>
       <p>温馨提醒：未注册用户，首次登录将完成注册</p>
 
 <!--      <functional-page-navigator-->

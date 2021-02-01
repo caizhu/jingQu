@@ -8,7 +8,6 @@
         controls
         autoplay="true"
         object-fit="cover"
-        picture-in-picture-mode="{{['push', 'pop']}}"
         style="width:100%;height:240px"
       ></video>
       <!-- <view class="textCon">

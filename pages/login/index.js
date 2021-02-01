@@ -10,29 +10,34 @@ grace.page({
     user:null
   },
   onLoad(){
-    this.$data.getStorageSync('user')
+    this.$data.user = wx.getStorageSync('user')
   },
   getUserInfoHandler(e){
     const detail = e.detail
     this.$http.post(api.appUser.getWxInfo,{
-      sessionKey:user.sessionKey,
+      sessionKey:this.$data.user.sessionKey,
       encryptedData:detail.encryptedData,
       iv:detail.iv,
       openId:this.$data.user.openId
     }).then(res=>{
-      console.log(res)
+      wx.showToast({
+        title: '授权成功',
+      })
       wx.setStorageSync('user', res)
+      this.$data.user = res
     })
   },
-  getPhoneNumberHandler(){
+  getPhoneNumberHandler(e){
     const detail = e.detail
-    this.$http.post(api.appUser.getWxInfo,{
-      sessionKey:user.sessionKey,
+    this.$http.post(api.appUser.getWxPhone,{
+      sessionKey:this.$data.user.sessionKey,
       encryptedData:detail.encryptedData,
       iv:detail.iv,
       openId:this.$data.user.openId
     }).then(res=>{
-      console.log(res)
+      wx.showToast({
+        title: '授权成功',
+      })
       wx.setStorageSync('user', res)
       wx.navigateBack({
         delta: 1,

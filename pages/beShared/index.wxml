@@ -8,7 +8,6 @@
       autoplay="true"
       poster="{{videoData.templateMainImageUrl}}"
       object-fit="cover"
-      picture-in-picture-mode="{{['push', 'pop']}}"
       style="width:100%;height:240px"
     ></video>    
   </view>  
