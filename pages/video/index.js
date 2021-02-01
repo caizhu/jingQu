@@ -30,7 +30,7 @@ grace.page({
     })
   },
   chooseVideoHandler(e) {
-    if(this.$data.detail.orderStatus === 0){
+    if (this.$data.detail.orderStatus === 0) {
       return
     }
     const index = e.currentTarget.dataset.index
@@ -46,7 +46,7 @@ grace.page({
         } else {
           let videoList = this.$data.videoPartList
           videoList[index].sourceVideoUrl = res.tempFilePath
-          videoList[index].duration = res.duration.toFixed(2)
+          videoList[index].duration = parseInt(res.duration)
           that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
         }
       },
@@ -74,7 +74,7 @@ grace.page({
               } else {
                 let videoList = that.$data.videoPartList
                 videoList[index].sourceVideoUrl = res.tempFilePath
-                videoList[index].duration = res.duration.toFixed(2)
+                videoList[index].duration = parseInt(res.duration)
                 that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
               }
             }
@@ -99,10 +99,10 @@ grace.page({
             timeStamp: res.timeStamp,
             success(rr) {
               const interval = setInterval(() => {
-                that.$http.get(api.appOperation.checkOrderPaymentStatus,{
-                  orderNo:res.orderNo
-                }).then(r=>{
-                  if(r.paymentStatus === 1){
+                that.$http.get(api.appOperation.checkOrderPaymentStatus, {
+                  orderNo: res.orderNo
+                }).then(r => {
+                  if (r.paymentStatus === 1) {
                     wx.showToast({
                       title: '支付成功',
                     })
@@ -121,38 +121,46 @@ grace.page({
           })
         })
       } else {
-        let videoArray = []
-        console.log('已购买')
-        Promise.all(
-          that.$data.videoPartList.map(item => {
-            return new Promise(async (resolve,reject)=>{
-              if (item.partType === 1) {
-                const sourceVideoUrl = item.sourceVideoUrl
-                const fileName = await that.getUploadSign(sourceVideoUrl)
-                videoArray.push({
-                  duration:item.duration,
-                  videoPartId:item.partId,
-                  videoUrl:fileName
-                })
-              }
-              resolve()
+        wx.requestSubscribeMessage({
+          tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
+          success(res) {
+            wx.showLoading({
+              title: '上传中',
+              icon:'loading'
             })
-          })
-        ).then(()=>{
-          console.log(11111)
-          this.$http.post(api.appOperation.submitVideoPart,{
-            form:{
-              userVideoPart:this.$data.videoPartList.length,
-              orderId:this.$data.detail.orderId,
-              userVideoPartVOList:videoArray
-            }
-          }).then(res=>{
-            console.log(res)
-          })
+            let videoArray = []
+            console.log('已购买')
+            Promise.all(
+              that.$data.videoPartList.map(item => {
+                return new Promise(async (resolve, reject) => {
+                  if (item.partType === 1) {
+                    const sourceVideoUrl = item.sourceVideoUrl
+                    const fileName = await that.getUploadSign(sourceVideoUrl)
+                    videoArray.push({
+                      duration: Number(item.duration),
+                      videoPartId: item.partId,
+                      videoUrl: fileName
+                    })
+                  }
+                  resolve()
+                })
+              })
+            ).then(() => {
+              that.$http.post(api.appOperation.submitVideoPart, {
+                userVideoPart: videoArray.length,
+                orderId: that.$data.detail.orderId,
+                userVideoPartVOList: videoArray
+              }).then(res => {
+                wx.hideLoading()
+                wx.navigateTo({
+                  url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}`,
+                })
+              })
+            })
+          }
         })
       }
     }
-
   },
   deleVideoHandler(e) {
     const index = e.currentTarget.dataset.index

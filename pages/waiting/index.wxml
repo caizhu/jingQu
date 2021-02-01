@@ -1,23 +1,13 @@
 <!--index.wxml-->
-<view class="container"> 
+<view class="container">
   <view class="mainbox">
     <h3>请稍等.....</h3>
     <view class="myVideoSection">
-    <video 
-      id="myVideo" 
-      src="https://shengshiyunyou.oss-cn-guangzhou.aliyuncs.com/template/exp_01001.mp4" 
-      binderror="videoErrorCallback" 
-      show-center-play-btn='{{true}}' 
-      show-play-btn="{{true}}" 
-      controls
-      poster="http://xingleduh5.oss-cn-shenzhen.aliyuncs.com/images/2020-03-10/44752c9e59bb4ae7ac7d0755bdc1eb39_20200310215313.png"
-      object-fit="cover"
-      picture-in-picture-mode="{{['push', 'pop']}}"
-      style="width:100%;height:300px"
-    ></video>    
-  </view>  
-  <view class="progress-box">
-  <progress percent="20" color="#345dfb" border-radius="10" show-info stroke-width="6" bindactiveend="bindactiveendBtn" />
-</view>
-</view>
+      <video src="{{waitData.adImageUrl}}" autoplay="true" controls object-fit="cover"
+        picture-in-picture-mode="{{['push', 'pop']}}" style="width:100%;height:300px"></video>
+    </view>
+    <view class="progress-box">
+      <progress percent="{{percent}}" color="#345dfb" border-radius="10" show-info stroke-width="6" />
+    </view>
+  </view>
 </view>
