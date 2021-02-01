@@ -12,6 +12,7 @@ export default {
         getUploadPolicy:'/api/appOperation/getUploadPolicy',
         submitVideoPart:'/api/appOperation/submitVideoPart',
         checkOrderPaymentStatus:'/api/appOperation/checkOrderPaymentStatus',
-        buyProduct:'/api/appOperation/buyProduct'
+        buyProduct:'/api/appOperation/buyProduct',
+        getProductVideo:'/api/appOperation/getProductVideo'
     }
 }

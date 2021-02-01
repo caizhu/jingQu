@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/beShared/index",
+    "pages/videoShow/index",
     "pages/index/index",
     "pages/video/index",
     "pages/buyList/index",

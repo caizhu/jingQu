@@ -21,10 +21,23 @@ grace.page({
       openId:this.$data.user.openId
     }).then(res=>{
       console.log(res)
+      wx.setStorageSync('user', res)
     })
   },
   getPhoneNumberHandler(){
-
+    const detail = e.detail
+    this.$http.post(api.appUser.getWxInfo,{
+      sessionKey:user.sessionKey,
+      encryptedData:detail.encryptedData,
+      iv:detail.iv,
+      openId:this.$data.user.openId
+    }).then(res=>{
+      console.log(res)
+      wx.setStorageSync('user', res)
+      wx.navigateBack({
+        delta: 1,
+      })
+    })
   }
 })
 
