@@ -13,10 +13,20 @@ grace.page({
       areaAdVo: null,
       areaAdVoList:[],
       areaVo:null
-    }
+    },
+    areaCode:null
   },
-  onLoad(){
-    const interval = setInterval(()=>{
+  onLoad(options){
+    if(options.areaCode){
+      this.$data.areaCode = options.areaCode
+      wx.setStorageSync('areaCode',this.$data.areaCode)
+    }else if(wx.getStorageSync('areaCode')){
+      this.$data.areaCode = wx.getStorageSync('areaCode')
+    }else{
+      this.$data.areaCode = 'abcd'
+    }
+    
+    const interval = setInterval(()=>{ 
       if(wx.getStorageSync('token')){
         clearInterval(interval)
         this.queryData()
@@ -26,7 +36,7 @@ grace.page({
   queryData(){
     app._showLoading()
     this.$http.get(api.appOperation.areaIndex,{
-      areaCode:'abcd'
+      areaCode:this.$data.areaCode
     }).then(res=>{
       app._hideLoading()
       this.$data.areaData = res
