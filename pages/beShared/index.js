@@ -1,19 +1,31 @@
-// index.js
-// 获取应用实例
-const app = getApp()
+import grace from '../../utils/grace'
+import api from '../../utils/api'
 
-Page({
-  data: {
-    imgUrl:'../../images/1.jpg',
-    playUrl:'../../images/play.png',
-    peopleImg:'../../images/people.jpg',
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+grace.page({
+  data:{
+    videoId:1,
+    videoData: null
   },
-  // 事件处理函数
-  onReady() {
-    this.videoContext = wx.createVideoContext('myVideo')
+  onLoad(options){
+    this.queryData()
   },
+  onShareAppMessage() { //转发给朋友
+    return {
+      title: this.$data.videoData.templateName,
+      path: '/pages/beShared/index?id=' + this.$data.videoId,
+      imageUrl: this.$data.videoData.templateMainImageUrl
+    }
+  },
+  queryData(){
+    this.$http.get(api.appOperation.getProductVideo,{
+      videoId:this.$data.videoId
+    }).then(res=>{
+      this.$data.videoData = res
+    })
+  },
+  templateDetailHandler(){
+    wx.navigateTo({
+      url: '/pages/video/index?id='+this.$data.videoData.templateId,
+    })
+  }
 })

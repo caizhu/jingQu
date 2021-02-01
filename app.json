@@ -1,15 +1,13 @@
 {
   "pages":[
+    "pages/waiting/index",
     "pages/beShared/index",
     "pages/videoShow/index",
     "pages/index/index",
     "pages/video/index",
     "pages/buyList/index",
     "pages/login/index",
-    "pages/beShared/index",
-    "pages/videoShow/index",
-    "pages/myCenter/index",
-    "pages/waiting/index"
+    "pages/myCenter/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

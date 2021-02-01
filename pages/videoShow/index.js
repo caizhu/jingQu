@@ -6,21 +6,21 @@ grace.page({
     videoId:1,
     videoData:null
   },
-  onLoad(){
-    this.queryData()
+  onLoad(options){
+    this.$data.videoId = options.id
+    this.queryDetail()
   },
-  onShareAppMessage(res) { //转发给朋友
+  onShareAppMessage() { //转发给朋友
     return {
       title: this.$data.videoData.templateName,
-      path: '/pages/beShared/index?id=' + this.$data.videoData.videoId,
+      path: '/pages/beShared/index?id=' + this.$data.videoId,
       imageUrl: this.$data.videoData.templateMainImageUrl
     }
   },
-  queryData(){
+  queryDetail(){
     this.$http.get(api.appOperation.getProductVideo,{
       videoId:this.$data.videoId
     }).then(res=>{
-      console.log(res)
       this.$data.videoData = res
     })
   },
