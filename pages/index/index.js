@@ -24,9 +24,11 @@ grace.page({
     },100)
   },
   queryData(){
+    app._showLoading()
     this.$http.get(api.appOperation.areaIndex,{
       areaCode:'abcd'
     }).then(res=>{
+      app._hideLoading()
       this.$data.areaData = res
     })
   },

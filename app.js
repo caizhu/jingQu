@@ -25,5 +25,13 @@ App({
         url: '/pages/login/index',
       })
     }
+  },
+  _showLoading(){
+    wx.showLoading({
+      title: '加载中...',
+    })
+  },
+  _hideLoading(){
+    wx.hideLoading()
   }
 })

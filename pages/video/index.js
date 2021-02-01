@@ -22,9 +22,11 @@ grace.page({
     }
   },
   loadDetail() {
+    app._showLoading()
     this.$http.get(api.appOperation.queryTemplate, {
       templateId: this.$data.id
     }).then(res => {
+      app._hideLoading()
       this.$data.detail = res
       this.$data.videoPartList = res.appTemplatePartVOList
     })
@@ -86,12 +88,12 @@ grace.page({
   makeVideoHandler() {
     const that = this
     if (app.checkLoginStatus()) {
-
-
       if (this.$data.detail.orderStatus === 0 && this.$data.detail.publicPrice > 0) {
+        app._showLoading()
         this.$http.get(api.appOperation.buyTemplate, {
           templateId: this.$data.id
         }).then(res => {
+          app._hideLoading()
           console.log('微信支付', res)
           wx.requestPayment({
             nonceStr: res.nonceStr,
@@ -100,10 +102,12 @@ grace.page({
             signType: 'MD5',
             timeStamp: res.timeStamp,
             success(rr) {
+              app._showLoading()
               const interval = setInterval(() => {
                 that.$http.get(api.appOperation.checkOrderPaymentStatus, {
                   orderNo: res.orderNo
                 }).then(r => {
+                  app._hideLoading()
                   if (r.paymentStatus === 1) {
                     wx.showToast({
                       title: '支付成功',
@@ -186,6 +190,7 @@ grace.page({
   },
   getUploadSign(sourceVideoUrl) {
     return new Promise((resolve, reject) => {
+      app._showLoading()
       this.$http.get(api.appOperation.getUploadPolicy, {
         uploadType: 1
       }).then(res => {
@@ -201,9 +206,11 @@ grace.page({
             'key': fileName
           },
           success(result) {
+            app._hideLoading()
             resolve(fileName)
           },
           fail(err) {
+            app._hideLoading()
             console.log(err)
             wx.showToast({
               title: '上传视频失败',

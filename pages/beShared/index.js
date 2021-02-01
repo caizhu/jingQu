@@ -1,6 +1,7 @@
 import grace from '../../utils/grace'
 import api from '../../utils/api'
 
+const app = getApp()
 grace.page({
   data:{
     videoId:1,
@@ -17,9 +18,11 @@ grace.page({
     }
   },
   queryData(){
+    app._showLoading()
     this.$http.get(api.appOperation.getProductVideo,{
       videoId:this.$data.videoId
     }).then(res=>{
+      app._hideLoading()
       this.$data.videoData = res
     })
   },

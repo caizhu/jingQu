@@ -1,6 +1,7 @@
 import grace from '../../utils/grace'
 import api from '../../utils/api'
 
+const app = getApp()
 grace.page({
   data:{
     areaId:1,
@@ -25,9 +26,11 @@ grace.page({
     }, 1000);
   },
   queryDetail(){
+    app._showLoading()
     this.$http.get(api.appOperation.getWaitingVideo,{
       areaId:this.$data.areaId
     }).then(res=>{
+      app._hideLoading()
       this.$data.waitData = res
     })
   }
