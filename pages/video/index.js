@@ -17,7 +17,7 @@ grace.page({
   onShareAppMessage(res) { //转发给朋友
     return {
       title: this.$data.detail.templateName,
-      path: '/pages/beShared/index?id=' + this.$data.id,
+      path: '/pages/video/index?id=' + this.$data.id,
       imageUrl: this.$data.detail.mainImageUrl
     }
   },
