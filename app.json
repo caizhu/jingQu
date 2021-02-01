@@ -6,7 +6,8 @@
     "pages/login/index",
     "pages/beShared/index",
     "pages/videoShow/index",
-    "pages/myCenter/index"
+    "pages/myCenter/index",
+    "pages/waiting/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
