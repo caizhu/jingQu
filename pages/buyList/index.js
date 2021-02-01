@@ -22,7 +22,7 @@ grace.page({
     })
   },
   goToVideoShow(e){
-    const id = e.currentTarget.id
+    const id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/video/index?id='+id
     })

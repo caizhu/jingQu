@@ -1,10 +1,12 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="buyList" wx:for="{{orderList}}" wx:key="id" bindtap="goToVideoShow" data-id="{{item.templateId}}"> 
+  <block wx:for="{{orderList}}" wx:key="id">
+    <view class="buyList" bindtap="goToVideoShow" data-id="{{item.templateId}}">
       <image src="{{item.areaMainImageUrl}}" class="peopleImg"></image>
       <h3>{{item.templateName}}</h3>
       <p>{{item.areaName}}</p>
       <h5>{{item.orderPrice}}</h5>
       <small>{{item.orderDate}}</small>
-    </view> 
+    </view>
+  </block>
 </view>
