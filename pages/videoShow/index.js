@@ -21,6 +21,11 @@ grace.page({
       }
     }, 1000);
   },
+  onUnload(){
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
+  },
   onShareAppMessage() { //转发给朋友
     return {
       title: this.$data.videoData.templateName,

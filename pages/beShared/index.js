@@ -8,6 +8,7 @@ grace.page({
     videoData: null
   },
   onLoad(options){
+    this.$data.videoId = options.id
     this.queryData()
   },
   onShareAppMessage() { //转发给朋友
