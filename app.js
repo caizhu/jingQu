@@ -18,12 +18,12 @@ App({
   globalData: {},
   checkLoginStatus(){
     const user = wx.getStorageSync('user')
-    if(!user){
+    if(user.nickName && user.userTel){
+      return true
+    }else{
       wx.navigateTo({
         url: '/pages/login/index',
       })
-    }else{
-      return true
     }
   }
 })
