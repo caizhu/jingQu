@@ -3,8 +3,8 @@
     "pages/index/index",
     "pages/waiting/index",
     "pages/beShared/index",
-    "pages/videoShow/index",
     "pages/video/index",
+    "pages/videoShow/index",
     "pages/buyList/index",
     "pages/login/index",
     "pages/myCenter/index"

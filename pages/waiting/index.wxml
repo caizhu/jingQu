@@ -3,7 +3,7 @@
   <view class="mainbox">
     <h3>请稍等.....</h3>
     <view class="myVideoSection">
-      <video src="{{waitData.adImageUrl}}" autoplay="true" controls object-fit="cover"
+      <video src="{{waitData.adImageUrl}}" autoplay="true" controls object-fit="cover" loop="true"
         picture-in-picture-mode="{{['push', 'pop']}}" style="width:100%;height:300px"></video>
     </view>
     <view class="progress-box">

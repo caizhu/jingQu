@@ -10,12 +10,13 @@ grace.page({
     videoId:0
   },
   onLoad(options){
+    this.$data.areaId = options.areaId
     this.$data.duration = options.duration
     this.$data.videoId = options.videoId
     this.queryDetail()
     const interval = setInterval(() => {
       this.$data.percent += parseInt((1/this.$data.duration)*100)
-      if(this.$data.percent === 100){
+      if(this.$data.percent >= 100){
         clearInterval(interval)
         wx.navigateTo({
           url: '/pages/videoShow/index?id='+this.$data.videoId,

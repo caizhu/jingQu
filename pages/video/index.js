@@ -86,7 +86,7 @@ grace.page({
   makeVideoHandler() {
     if (app.checkLoginStatus()) {
       const that = this
-      if (this.$data.detail.orderStatus === 0) {
+      if (this.$data.detail.orderStatus === 0 && this.$data.detail.publicPrice > 0) {
         this.$http.get(api.appOperation.buyTemplate, {
           templateId: this.$data.id
         }).then(res => {
@@ -153,7 +153,7 @@ grace.page({
               }).then(res => {
                 wx.hideLoading()
                 wx.navigateTo({
-                  url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}`,
+                  url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}&areaId=${that.$data.detail.areaId}`,
                 })
               })
             })
