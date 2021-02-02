@@ -43,6 +43,7 @@ grace.page({
   },
   startUpload() {
     const that = this
+    console.log(this.$data.videoData)
     if(this.$data.videoData.template.orderStatus === 0 && this.$data.videoData.template.publicPrice > 0){
       app._showLoading()
       this.$http.get(api.appOperation.buyVideo, {
@@ -97,11 +98,19 @@ grace.page({
         console.log(res)
         if (res.statusCode === 200) {
           wx.saveVideoToPhotosAlbum({
-            tempFilePath: res.tempFilePath,
-            success(){
+            filePath: res.tempFilePath,
+            success(rr){
+              console.log(rr)
               wx.showToast({
                 title: '下载成功',
                 icon: 'success'
+              })
+            },
+            fail(err){
+              console.log(err)
+              wx.showToast({
+                title: '下载失败',
+                icon:'none'
               })
             }
           })
