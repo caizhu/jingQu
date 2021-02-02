@@ -42,46 +42,49 @@ grace.page({
     })
   },
   startUpload() {
+    const that = this
     if(this.$data.videoData.template.orderStatus === 0 && this.$data.videoData.template.publicPrice > 0){
       app._showLoading()
-    this.$http.get(api.appOperation.buyVideo, {
-      videoId: this.$data.videoId
-    }).then(res => {
-      console.log(res)
-      app._hideLoading()
-      console.log('微信支付', res)
-      wx.requestPayment({
-        nonceStr: res.nonceStr,
-        package: res.package,
-        paySign: res.paySign,
-        signType: 'MD5',
-        timeStamp: res.timeStamp,
-        success() {
-          app._showLoading()
-          const interval = setInterval(() => {
-            that.$http.get(api.appOperation.checkOrderPaymentStatus, {
-              orderNo: res.orderNo
-            }).then(r => {
-              app._hideLoading()
-              if (r.paymentStatus === 1) {
-                wx.showToast({
-                  title: '支付成功',
-                })
-                clearInterval(interval)
-                that.downLoad()
-              }
+      this.$http.get(api.appOperation.buyVideo, {
+        videoId: this.$data.videoId
+      }).then(res => {
+        console.log(res)
+        app._hideLoading()
+        console.log('微信支付', res)
+        wx.requestPayment({
+          nonceStr: res.nonceStr,
+          package: res.package,
+          paySign: res.paySign,
+          signType: 'MD5',
+          timeStamp: res.timeStamp,
+          success() {
+            app._showLoading()
+            const interval = setInterval(() => {
+              that.$http.get(api.appOperation.checkOrderPaymentStatus, {
+                orderNo: res.orderNo
+              }).then(r => {
+                app._hideLoading()
+                if (r.paymentStatus === 1) {
+                  wx.showToast({
+                    title: '支付成功',
+                  })
+                  clearInterval(interval)
+                  that.downLoad()
+                }
+              })
+            }, 200);
+          },
+          fail(err) {
+            console.log(err)
+            wx.showToast({
+              title: '支付失败',
+              icon: 'none'
             })
-          }, 200);
-        },
-        fail(err) {
-          console.log(err)
-          wx.showToast({
-            title: '支付失败',
-            icon: 'none'
-          })
-        }
+          }
+        })
       })
-    })
+    }else{
+      that.downLoad()
     }
   },
   downLoad() {
@@ -91,10 +94,16 @@ grace.page({
     wx.downloadFile({
       url: this.$data.videoData.productVideoUrl,
       success(res) {
+        console.log(res)
         if (res.statusCode === 200) {
-          wx.showToast({
-            title: '下载成功',
-            icon: 'success'
+          wx.saveVideoToPhotosAlbum({
+            tempFilePath: res.tempFilePath,
+            success(){
+              wx.showToast({
+                title: '下载成功',
+                icon: 'success'
+              })
+            }
           })
         }
       },
