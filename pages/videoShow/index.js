@@ -42,7 +42,7 @@ grace.page({
     })
   },
   startUpload() {
-    if(this.$data.videoData.template.orderStatus === 0 && this.$dat.videoData.template.publicPrice > 0){
+    if(this.$data.videoData.template.orderStatus === 0 && this.$data.videoData.template.publicPrice > 0){
       app._showLoading()
     this.$http.get(api.appOperation.buyVideo, {
       videoId: this.$data.videoId

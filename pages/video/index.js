@@ -164,7 +164,6 @@ grace.page({
   },
   getUploadSign(sourceVideoUrl) {
     return new Promise((resolve, reject) => {
-      app._showLoading()
       this.$http.get(api.appOperation.getUploadPolicy, {
         uploadType: 1
       }).then(res => {
@@ -180,11 +179,9 @@ grace.page({
             'key': fileName
           },
           success(result) {
-            app._hideLoading()
             resolve(fileName)
           },
           fail(err) {
-            app._hideLoading()
             console.log(err)
             wx.showToast({
               title: '上传视频失败',
