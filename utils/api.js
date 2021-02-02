@@ -14,6 +14,7 @@ export default {
         checkOrderPaymentStatus:'/api/appOperation/checkOrderPaymentStatus',
         buyProduct:'/api/appOperation/buyProduct',
         getProductVideo:'/api/appOperation/getProductVideo',
-        getWaitingVideo:'/api/appOperation/getWaitingVideo'
+        getWaitingVideo:'/api/appOperation/getWaitingVideo',
+        buyVideo:'/api/appOperation/buyVideo'
     }
 }
