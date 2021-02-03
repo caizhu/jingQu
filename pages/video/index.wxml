@@ -20,7 +20,7 @@
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <ul class="addList">
         <li wx:for="{{videoPartList}}" wx:key="index">
-          <view class="addSelect" bindtap="chooseVideoHandler" style="{{detail.orderStatus === 0?'opacity:0.6':''}}" wx:if="{{item.partType === 1 && !item.sourceVideoUrl}}" data-index="{{index}}">
+          <view class="addSelect" bindtap="chooseVideoHandler" wx:if="{{item.partType === 1 && !item.sourceVideoUrl}}" data-index="{{index}}">
             <image src="../../images/add.png" class="addimg"></image>
             上传视频
           </view>

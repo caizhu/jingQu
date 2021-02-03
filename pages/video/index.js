@@ -6,7 +6,8 @@ grace.page({
   data: {
     id: 1,
     detail: null,
-    videoPartList: []
+    videoPartList: [],
+    firstClick:true
   },
   onLoad(options) {
     this.$data.id = options.id
@@ -32,24 +33,40 @@ grace.page({
     })
   },
   chooseVideoHandler(e) {
-    if (this.$data.detail.orderStatus === 0) {
-      return
+    const index = e.currentTarget.dataset.index
+    const duration = this.$data.videoPartList[index].partDuration
+    const that = this
+    if(this.$data.firstClick){
+      wx.showModal({
+        title:'提示',
+        content:'您即将上传自己的视频内容，请在剪裁界面左右拖动进度条',
+        success(res){
+          that.$data.firstClick = false
+          that.chooseFun(e)
+        }
+      })
+    }else{
+      that.chooseFun(e)
     }
+  },
+  chooseFun(e){
     const index = e.currentTarget.dataset.index
     const duration = this.$data.videoPartList[index].partDuration
     const that = this
     wx.chooseVideo({
       camera: ['camera', 'album'],
-      maxDuration: duration,
       success: (res) => {
         const path = res.tempFilePath
         if (res.duration > duration) {
           that.editPhoto(index, duration, path)
         } else {
-          let videoList = this.$data.videoPartList
-          videoList[index].sourceVideoUrl = res.tempFilePath
-          videoList[index].duration = parseInt(res.duration)
-          that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+          wx.showToast({
+            title: `视频长度过小`,
+          })
+          // let videoList = this.$data.videoPartList
+          // videoList[index].sourceVideoUrl = res.tempFilePath
+          // videoList[index].duration = parseInt(res.duration)
+          // that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
         }
       },
       faile: (err) => {
@@ -63,25 +80,22 @@ grace.page({
   },
   editPhoto(index, duration, path) {
     const that = this
-    wx.showModal({
-      title: '提示',
-      content: `视频段落时长超过${duration}秒，是否需要裁剪，否则不允许使用`,
-      success(res) {
-        if (res.confirm) {
-          wx.openVideoEditor({
-            filePath: path,
-            success: (res) => {
-              const tempDuration = parseInt(res.duration / 1000)
-              if (tempDuration > duration) {
-                that.editPhoto(index, duration, res.tempFilePath)
-              } else {
-                let videoList = that.$data.videoPartList
-                videoList[index].sourceVideoUrl = res.tempFilePath
-                videoList[index].duration = parseInt(res.duration)
-                that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-              }
+    wx.openVideoEditor({
+      filePath: path,
+      success: (res) => {
+        const tempDuration = parseInt(res.duration / 1000)
+        if (tempDuration < duration) {
+          wx.showToast({
+            title: '视频长度过小',
+            success(){
+              that.editPhoto(index, duration, path)
             }
           })
+        } else {
+          let videoList = that.$data.videoPartList
+          videoList[index].sourceVideoUrl = res.tempFilePath
+          videoList[index].duration = parseInt(res.duration)/1000
+          that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
         }
       }
     })
@@ -89,96 +103,56 @@ grace.page({
   makeVideoHandler() {
     const that = this
     if (app.checkLoginStatus()) {
-      if (this.$data.detail.orderStatus === 0 && this.$data.detail.publicPrice > 0) {
-        app._showLoading()
-        this.$http.get(api.appOperation.buyTemplate, {
-          templateId: this.$data.id
-        }).then(res => {
-          app._hideLoading()
-          console.log('微信支付', res)
-          wx.requestPayment({
-            nonceStr: res.nonceStr,
-            package: res.package,
-            paySign: res.paySign,
-            signType: 'MD5',
-            timeStamp: res.timeStamp,
-            success(rr) {
-              app._showLoading()
-              const interval = setInterval(() => {
-                that.$http.get(api.appOperation.checkOrderPaymentStatus, {
-                  orderNo: res.orderNo
-                }).then(r => {
-                  app._hideLoading()
-                  if (r.paymentStatus === 1) {
-                    wx.showToast({
-                      title: '支付成功',
-                    })
-                    clearInterval(interval)
-                    that.loadDetail()
-                  }
-                })
-              }, 200);
-            },
-            fail(err) {
-              console.log(err)
-              wx.showToast({
-                title: '支付失败',
-                icon:'none'
-              })
-            }
-          })
+      try {
+        this.$data.videoPartList.forEach(item => {
+          if (item.partType === 1 && !item.sourceVideoUrl) {
+            throw new Error(item.partName)
+          }
         })
-      } else {
-        try {
-          this.$data.videoPartList.forEach(item => {
-            if (item.partType === 1 && !item.sourceVideoUrl) {
-              throw new Error(item.partName)
-            }
-          })
-          wx.requestSubscribeMessage({
-            tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
-            success(res) {
-              wx.showLoading({
-                title: '上传中',
-                icon: 'loading'
-              })
-              let videoArray = []
-              console.log('已购买')
-              Promise.all(
-                that.$data.videoPartList.map(item => {
-                  return new Promise(async (resolve, reject) => {
-                    if (item.partType === 1) {
-                      const sourceVideoUrl = item.sourceVideoUrl
-                      const fileName = await that.getUploadSign(sourceVideoUrl)
-                      videoArray.push({
-                        duration: Number(item.duration),
-                        videoPartId: item.partId,
-                        videoUrl: fileName
-                      })
-                    }
-                    resolve()
-                  })
-                })
-              ).then(() => {
-                that.$http.post(api.appOperation.submitVideoPart, {
-                  userVideoPart: videoArray.length,
-                  orderId: that.$data.detail.orderId,
-                  userVideoPartVOList: videoArray
-                }).then(res => {
-                  wx.hideLoading()
-                  wx.navigateTo({
-                    url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}&areaId=${that.$data.detail.areaId}`,
-                  })
+        wx.requestSubscribeMessage({
+          tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
+          success(res) {
+            wx.showLoading({
+              title: '上传中',
+              icon: 'loading'
+            })
+            let videoArray = []
+            console.log('已购买')
+            Promise.all(
+              that.$data.videoPartList.map(item => {
+                return new Promise(async (resolve, reject) => {
+                  if (item.partType === 1) {
+                    const sourceVideoUrl = item.sourceVideoUrl
+                    const fileName = await that.getUploadSign(sourceVideoUrl)
+                    videoArray.push({
+                      duration: Number(item.duration),
+                      videoPartId: item.partId,
+                      videoUrl: fileName
+                    })
+                  }
+                  resolve()
                 })
               })
-            }
-          })
-        } catch (e) {
-          wx.showToast({
-            title: `请上传的视频`,
-            icon:'none'
-          })
-        }
+            ).then(() => {
+              that.$http.post(api.appOperation.submitVideoPart, {
+                orderId:1,
+                userVideoPart: videoArray.length,
+                templateId: that.$data.detail.templateId,
+                userVideoPartVOList: videoArray
+              }).then(res => {
+                wx.hideLoading()
+                wx.navigateTo({
+                  url: `/pages/waiting/index?duration=${that.$data.detail.videoDuration}&videoId=${res}&areaId=${that.$data.detail.areaId}`,
+                })
+              })
+            })
+          }
+        })
+      } catch (e) {
+        wx.showToast({
+          title: `请上传视频`,
+          icon:'none'
+        })
       }
     }
 
@@ -191,7 +165,6 @@ grace.page({
   },
   getUploadSign(sourceVideoUrl) {
     return new Promise((resolve, reject) => {
-      app._showLoading()
       this.$http.get(api.appOperation.getUploadPolicy, {
         uploadType: 1
       }).then(res => {
@@ -207,11 +180,9 @@ grace.page({
             'key': fileName
           },
           success(result) {
-            app._hideLoading()
             resolve(fileName)
           },
           fail(err) {
-            app._hideLoading()
             console.log(err)
             wx.showToast({
               title: '上传视频失败',
