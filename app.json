@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/video/index",
     "pages/beShared/index",
     "pages/waiting/index",
-    "pages/video/index",
     "pages/videoShow/index",
     "pages/buyList/index",
     "pages/login/index",

@@ -18,21 +18,27 @@
   <view class="mainbox">
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
-      <ul class="addList">
-        <li wx:for="{{videoPartList}}" wx:key="index">
-          <view class="addSelect" bindtap="chooseVideoHandler" wx:if="{{item.partType === 1 && !item.sourceVideoUrl}}" data-index="{{index}}">
-            <image src="../../images/add.png" class="addimg"></image>
-            上传视频
+      <view class="addList">
+        <view class="add-item" wx:for="{{videoPartList}}" wx:key="index" wx:if="{{item.partType === 1}}">
+          <view class="upload-rect" bindtap="chooseVideoHandler" data-index="{{index}}" wx:if="{{!item.sourceVideoUrl}}">
+            <view>
+              <image src="../../images/add_video.jpg" class="add-icon"></image>
+            </view>
+            <view class="upload-text">
+              <text>上传视频</text>
+            </view>
           </view>
-          <view class="selectedImg" wx:else>
-            <video src="{{item.sourceVideoUrl}}" class="imgSize"></video>
-            <text wx:if="{{item.duration}}">{{item.duration}}s</text>
-            <button class="deleVideo" bindtap="deleVideoHandler" data-index="{{index}}" wx:if="{{item.partType === 1}}">
+          <view class="upload-rect" wx:if="{{item.sourceVideoUrl}}">
+            <video src="{{item.sourceVideoUrl}}" style="width:100%;height:100%;"></video>
+            <button bindtap="deleVideoHandler" data-index="{{index}}" class="delete-icon">
               <image src="../../images/ashbin.png"></image>
             </button>
           </view>
-        </li>
-      </ul>
+          <view class="part-bg">
+            第{{index}}段
+          </view>
+        </view>
+      </view>
     </view>
     <view class="submitBox">
       <label class="radio">

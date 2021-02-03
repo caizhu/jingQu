@@ -21,7 +21,6 @@
           src="{{item.showVideoUrl}}"
           binderror="videoErrorCallback"
           controls
-          autoplay="false"
           object-fit="cover"
           style="width:100%;height:200px"
         ></video>

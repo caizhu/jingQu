@@ -41,8 +41,10 @@ grace.page({
         title:'提示',
         content:'您即将上传自己的视频内容，请在剪裁界面左右拖动进度条',
         success(res){
+         if(res.confirm){
           that.$data.firstClick = false
           that.chooseFun(e)
+         }
         }
       })
     }else{
@@ -96,6 +98,7 @@ grace.page({
           videoList[index].sourceVideoUrl = res.tempFilePath
           videoList[index].duration = parseInt(res.duration)/1000
           that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+          console.log(that.$data.videoPartList)
         }
       }
     })
