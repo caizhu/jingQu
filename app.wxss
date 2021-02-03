@@ -43,10 +43,10 @@ h5{
   display: block;
   border-radius: 22px;
   position: relative;
-  background: -webkit-linear-gradient(left,#ffa200, #ffb400); /* Safari 5.1 - 6.0 */ 
-  background: -o-linear-gradient(right,#ffa200, #ffb400); /* Opera 11.1 - 12.0 */ 
-  background: -moz-linear-gradient(right,#ffa200, #ffb400); /* Firefox 3.6 - 15 */
-  background: linear-gradient(right,#ffa200, #ffb400); /* 标准的语法 */
+  background: -webkit-linear-gradient(left,#ff8a00, #ffa200); /* Safari 5.1 - 6.0 */ 
+  background: -o-linear-gradient(right,#ff8a00, #ffa200); /* Opera 11.1 - 12.0 */ 
+  background: -moz-linear-gradient(right,#ff8a00, #ffa200); /* Firefox 3.6 - 15 */
+  background: linear-gradient(right,#ff8a00, #ffa200); /* 标准的语法 */
 }
 button.shareBtn{
   background:#f7f7f7;
