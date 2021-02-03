@@ -69,6 +69,9 @@ grace.page({
                   wx.showToast({
                     title: '支付成功',
                   })
+                  let videoData = that.$data.videoData
+                  videoData.template.orderStatus = 1
+                  that.$data.videoData = JSON.parse(JSON.stringify(videoData))
                   clearInterval(interval)
                   that.downLoad()
                 }
