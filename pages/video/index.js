@@ -55,7 +55,8 @@ grace.page({
       faile: (err) => {
         console.log(err)
         wx.showToast({
-          title: '获取视频失败',
+          title: '上传视频失败',
+          icon:'none'
         })
       }
     })
