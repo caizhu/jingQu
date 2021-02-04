@@ -20,7 +20,7 @@
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <view class="addList">
         <view class="add-item" wx:for="{{videoPartList}}" wx:key="index" wx:if="{{item.partType === 1}}">
-          <view class="upload-rect" bindtap="chooseVideoHandler" data-index="{{index}}" wx:if="{{!item.sourceVideoUrl}}">
+          <view class="{{detail.videoPart % 2 === 0?'upload-rect-two':'upload-rect-three'}}" bindtap="chooseVideoHandler" data-index="{{index}}" wx:if="{{!item.sourceVideoUrl}}">
             <view>
               <image src="../../images/add_video.jpg" class="add-icon"></image>
             </view>
@@ -28,14 +28,14 @@
               <text>上传视频</text>
             </view>
           </view>
-          <view class="upload-rect" wx:if="{{item.sourceVideoUrl}}">
+          <view class="{{detail.videoPart % 2 === 0?'upload-rect-two':'upload-rect-three'}}" wx:if="{{item.sourceVideoUrl}}">
             <video src="{{item.sourceVideoUrl}}" style="width:100%;height:100%;"></video>
             <button bindtap="deleVideoHandler" data-index="{{index}}" class="delete-icon">
               <image src="../../images/ashbin.png"></image>
             </button>
           </view>
           <view class="part-bg">
-            第{{index}}段
+            第{{index + 1}}段
           </view>
         </view>
       </view>

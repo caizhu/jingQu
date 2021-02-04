@@ -61,16 +61,16 @@
 }
 
 .add-item{
-  margin-right: 21rpx;
+  margin-right: 20rpx;
   margin-bottom: 41rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.upload-rect{
+.upload-rect-three{
   width: 208rpx;
-  height: 222rpx;
+  height: 208rpx;
   background:'#FFFFFF';
   box-shadow: 0px 0px 10px 0px 
     rgba(95, 95, 95, 0.1);
@@ -81,6 +81,18 @@
   position: relative;
 }
 
+.upload-rect-two{
+  width: 325rpx;
+  height: 325rpx;
+  background:'#FFFFFF';
+  box-shadow: 0px 0px 10px 0px 
+    rgba(95, 95, 95, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
 .add-icon{
   width: 47rpx;
