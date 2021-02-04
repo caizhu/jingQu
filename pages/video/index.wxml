@@ -19,7 +19,7 @@
     <view class="addBVideo">
       <p>请根据视频提示，在下方分别拍摄或上传视频，我们将快速为您剪辑生成视频，大师手笔，一触即达</p>
       <view class="addList">
-        <view class="add-item" wx:for="{{videoPartList}}" wx:key="index" wx:if="{{item.partType === 1}}">
+        <view class="{{detail.videoPart % 2 === 0?'add-item-two':'add-item-three'}}" wx:for="{{videoPartList}}" wx:key="index" wx:if="{{item.partType === 1}}">
           <view class="{{detail.videoPart % 2 === 0?'upload-rect-two':'upload-rect-three'}}" bindtap="chooseVideoHandler" data-index="{{index}}" wx:if="{{!item.sourceVideoUrl}}">
             <view>
               <image src="../../images/add_video.jpg" class="add-icon"></image>
