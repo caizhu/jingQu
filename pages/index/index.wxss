@@ -9,11 +9,12 @@
 .headerbox .textCon{
   width: 100%;
   position: absolute;
-  bottom:28px;
-  left: 20px;
+  bottom:0;
+  left: 0;
+  padding: 0 0 28px 20px;
+  background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5), rgba(0,0,0,0.7));
 }
 .headerbox .textCon h2,.headerbox .textCon p{
-  display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis;
@@ -23,17 +24,13 @@
   -webkit-box-sizing: border-box;
   /* Safari */
   color: #fff;
-  padding:0 2px;
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
   border-radius: 4px;
-  line-height: 20px;
-  /* text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .headerbox .textCon h2{
   font-size: 24px;
-  line-height: 24px;
-  margin-bottom: 3px;
+  line-height: 40px;
 }
 .mainbox{
   margin-top:-20px;  

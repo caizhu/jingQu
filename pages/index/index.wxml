@@ -3,9 +3,7 @@
     <view class="headerbox">
         <image src="{{areaData.areaVo.mainImageUrl}}" style="width:100%;height:240px;"></image>    
       <view class="textCon">
-        <view>
-          <h2>{{areaData.areaVo.areaName}}</h2>
-        </view>
+        <h2>{{areaData.areaVo.areaName}}</h2>
         <p>{{areaData.areaVo.areaDesc}}</p>
       </view>  
       <button class="btn" bindtap="goToUserCenter" class="toUserCenter">
