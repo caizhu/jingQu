@@ -23,7 +23,7 @@ grace.page({
     }else if(wx.getStorageSync('areaCode')){
       this.$data.areaCode = wx.getStorageSync('areaCode')
     }else{
-      this.$data.areaCode = 'abcd'
+      this.$data.areaCode = 'zhxld'
     }
     
     const interval = setInterval(()=>{ 
@@ -33,12 +33,16 @@ grace.page({
       }
     },100)
   },
+  onPullDownRefresh(){
+    this.queryData()
+  },
   queryData(){
     app._showLoading()
     this.$http.get(api.appOperation.areaIndex,{
       areaCode:this.$data.areaCode
     }).then(res=>{
       app._hideLoading()
+      wx.stopPullDownRefresh()
       this.$data.areaData = res
     })
   },
