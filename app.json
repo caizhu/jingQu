@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/bindPhoneNum/index",
     "pages/index/index",
     "pages/myCenter/index",
     "pages/myUserPage/index",
     "pages/loginPage/index",
-    "pages/bindPhoneNum/index",
     "pages/video/index",
     "pages/beShared/index",
     "pages/waiting/index",

@@ -2,17 +2,17 @@
 <view class="container">
   <view class="listBox">
     手机号码
-    <input class="weui-input" auto-focus placeholder="请输入"/>
+    <input class="weui-input" auto-focus placeholder="请输入" bindinput="inputChangeHandler" data-key="phone"/>
   </view>
   <view class="listBox">
     验证码
-    <input class="weui-input" placeholder="请输入"/>
+    <input class="weui-input" placeholder="请输入" bindinput="inputChangeHandler" data-key="code"/>
     <button class="btn">
     点击获取
   </button>
   </view>
   <view class="footerBtn">
-    <button class="btn">
+    <button class="btn" bindtap="bindHandler">
       绑定
     </button>
   </view>
