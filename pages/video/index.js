@@ -189,6 +189,7 @@ grace.page({
             console.log(err)
             wx.showToast({
               title: '上传视频失败',
+              icon:'none'
             })
           }
         })

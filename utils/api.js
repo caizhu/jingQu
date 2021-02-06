@@ -5,7 +5,8 @@ export default {
         getWxPhone:'/api/appUser/getWxPhone',
         getMyInfo:'/api/appUser/getMyInfo',
         sendSms:'/api/appUser/sendSms',
-        bindPhoneNumber:'/api/appUser/bindPhoneNumber'
+        bindPhoneNumber:'/api/appUser/bindPhoneNumber',
+        updateMySelf:'/api/appUser/updateMySelf'
     },
     appOperation:{
         areaIndex:'/api/appOperation/areaIndex',
