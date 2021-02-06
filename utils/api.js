@@ -2,7 +2,8 @@ export default {
     appUser:{
         wxLogin:'/api/appUser/wxLogin',
         getWxInfo:'/api/appUser/getWxInfo',
-        getWxPhone:'/api/appUser/getWxPhone'
+        getWxPhone:'/api/appUser/getWxPhone',
+        getMyInfo:'/api/appUser/getMyInfo'
     },
     appOperation:{
         areaIndex:'/api/appOperation/areaIndex',

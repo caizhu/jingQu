@@ -1,16 +1,16 @@
 {
   "pages":[
-    "pages/bindPhoneNum/index",
+    "pages/index/index",
+    "pages/myCenter/index",
     "pages/myUserPage/index",
     "pages/loginPage/index",
-    "pages/index/index",
+    "pages/bindPhoneNum/index",
     "pages/video/index",
     "pages/beShared/index",
     "pages/waiting/index",
     "pages/videoShow/index",
     "pages/buyList/index",
-    "pages/login/index",
-    "pages/myCenter/index"
+    "pages/login/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

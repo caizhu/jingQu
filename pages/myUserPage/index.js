@@ -7,10 +7,18 @@ const app = getApp()
 grace.page({
   data:{
     wxPhone:'../../images/phone.png',
+    user: null
   },
   onLoad(){
-    this.$data.user = wx.getStorageSync('user')
+    this.getUserInfo()
   },
-  
+  getUserInfo(){
+    app._showLoading()
+    this.$http.get(api.appUser.getMyInfo).then(res=>{
+      app._hideLoading()
+      this.$data.user = res
+      wx.setStorageSync('user', res)
+    })
+  }
 })
 

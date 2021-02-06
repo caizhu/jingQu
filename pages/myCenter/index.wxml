@@ -7,7 +7,7 @@
     <view class="headerBox">
       <h3>{{user.nickName}}</h3>
     <p>{{user.userTel}}</p>
-    <button class="editPenBtn">
+    <button class="editPenBtn" bindtap="editUserInfoHandler">
         <image src="{{editPen}}" style="width:16px;height:16px;margin-right:6px"></image>
         编辑个人资料
       </button>
