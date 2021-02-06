@@ -4,7 +4,8 @@ import api from '../../utils/api'
 const app = getApp()
 grace.page({
   data:{
-    orderList:[]
+    orderList:[],
+    emptyImg:'../../images/movie.png',    
   },
   onLoad(){
     this.loadList()

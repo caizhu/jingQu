@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="peopleHeader">
+      <View class="peopleImg">
+      <open-data type="userAvatarUrl"></open-data>
+    </View>
+  </view>
+  <view class="listBox">
+    昵称
+    <h5>王彩珠</h5>
+  </view>
+  <view class="listBox">
+    手机号码
+    <h5>1234566777</h5>
+  </view>
+  <button class="wxPhone">
+    <image src="{{wxPhone}}" style="width:20px;height:20px;margin-right:6px"></image>
+    微信手机号授权
+  </button>
+</view>

@@ -1,0 +1,26 @@
+/**index.wxss**/
+.ibox{
+  padding: 20% 40px 10px 10%;
+  box-shadow: none;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 30px;
+}
+.ibox h3{
+  font-size: 28px;
+  color: #202020;
+  margin-bottom: 40px;
+}
+.weui-input{
+  background:#edeff2;
+  border-radius: 34px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding:11px 20px;
+  text-align: left;
+  color: #202020;
+}
+.btn{
+  margin-top: 30px;
+}

@@ -1,5 +1,8 @@
 {
   "pages":[
+    "pages/bindPhoneNum/index",
+    "pages/myUserPage/index",
+    "pages/loginPage/index",
     "pages/index/index",
     "pages/video/index",
     "pages/beShared/index",

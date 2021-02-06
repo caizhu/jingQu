@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="ibox">
+      <h3>欢迎登录</h3>
+      <input class="weui-input" auto-focus placeholder="请输入账号"/>
+      <input class="weui-input" password type="text" placeholder="请输入密码" />
+      <button class="btn">
+        登录
+      </button>
+  </view>
+</view>

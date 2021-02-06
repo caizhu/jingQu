@@ -4,12 +4,19 @@
     <View class="peopleImg">
       <open-data type="userAvatarUrl"></open-data>
     </View>
-    <h3>{{user.nickName}}</h3>
+    <view class="headerBox">
+      <h3>{{user.nickName}}</h3>
     <p>{{user.userTel}}</p>
+    <button class="editPenBtn">
+        <image src="{{editPen}}" style="width:16px;height:16px;margin-right:6px"></image>
+        编辑个人资料
+      </button>
+    </view>
+    
   </view>
   <ul class="funList">
     <li bindtap="goToBuyList">
-      <image src="{{listImg}}" class="listImg"></image>购买记录
+      <image src="{{listImg}}" class="listImg"></image>我的订单
       <image src="{{rightArrow}}" class="rightArrow"></image>
     </li>
   </ul>

@@ -41,3 +41,17 @@
   bottom: 15px;
   right: 20px;
 }
+.emptyPage{
+  padding: 25% 0 25% 0;
+}
+.emptyPage .emptyImg{
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+.emptyPage h5{
+  font-weight: normal;
+  font-size: 18px;
+  text-align: center;
+  color: #202020;
+}

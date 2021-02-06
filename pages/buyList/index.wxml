@@ -1,12 +1,21 @@
 <!--index.wxml-->
 <view class="container">
-  <block wx:for="{{orderList}}" wx:key="id">
-    <view class="buyList" bindtap="goToVideoShow" data-id="{{item.templateId}}">
-      <image src="{{item.areaMainImageUrl}}" class="peopleImg"></image>
-      <h3>{{item.templateName}}</h3>
-      <p>{{item.areaName}}</p>
-      <h5>{{item.orderPrice}}</h5>
-      <small>{{item.orderDate}}</small>
+  <block v-if="orderList.length==0">
+    <view class="emptyPage">
+      <image src="{{emptyImg}}" class="emptyImg"></image>
+      <h5>暂无记录</h5>
     </view>
   </block>
+  <block v-else>
+    <block wx:for="{{orderList}}" wx:key="id">
+      <view class="buyList" bindtap="goToVideoShow" data-id="{{item.templateId}}">
+        <image src="{{item.areaMainImageUrl}}" class="peopleImg"></image>
+        <h3>{{item.templateName}}</h3>
+        <p>{{item.areaName}}</p>
+        <h5>{{item.orderPrice}}</h5>
+        <small>{{item.orderDate}}</small>
+      </view>
+  </block>
+  </block>
+  
 </view>

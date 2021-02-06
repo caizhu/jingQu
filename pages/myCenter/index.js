@@ -3,8 +3,9 @@ import grace from '../../utils/grace'
 grace.page({
   data:{
     user:null,
-    listImg:'../../images/share.png',
+    listImg:'../../images/list.png',
     rightArrow:'../../images/arrow.png',
+    editPen:'../../images/editPen.png',
     motto: 'Hello World',
   },
   onLoad(){
