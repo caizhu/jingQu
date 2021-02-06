@@ -3,7 +3,9 @@ export default {
         wxLogin:'/api/appUser/wxLogin',
         getWxInfo:'/api/appUser/getWxInfo',
         getWxPhone:'/api/appUser/getWxPhone',
-        getMyInfo:'/api/appUser/getMyInfo'
+        getMyInfo:'/api/appUser/getMyInfo',
+        sendSms:'/api/appUser/sendSms',
+        bindPhoneNumber:'/api/appUser/bindPhoneNumber'
     },
     appOperation:{
         areaIndex:'/api/appOperation/areaIndex',

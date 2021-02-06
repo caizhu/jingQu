@@ -13,7 +13,7 @@
     手机号码
     <h5>{{user.userTel}}</h5>
   </view>
-  <button class="wxPhone">
+  <button class="wxPhone" open-type="getPhoneNumber" bindgetphonenumber="getPhoneHandler">
     <image src="{{wxPhone}}" style="width:20px;height:20px;margin-right:6px"></image>
     微信手机号授权
   </button>

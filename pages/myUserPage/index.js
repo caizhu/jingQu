@@ -9,7 +9,7 @@ grace.page({
     wxPhone:'../../images/phone.png',
     user: null
   },
-  onLoad(){
+  onShow(){
     this.getUserInfo()
   },
   getUserInfo(){
@@ -18,6 +18,23 @@ grace.page({
       app._hideLoading()
       this.$data.user = res
       wx.setStorageSync('user', res)
+    })
+  },
+  getPhoneHandler(e){
+    const detail = e.detail
+    app._showLoading()
+    this.$http.post(api.appUser.getWxPhone,{
+      sessionKey:this.$data.user.sessionKey,
+      encryptedData:detail.encryptedData,
+      iv:detail.iv,
+      openId:this.$data.user.openId
+    }).then(res=>{
+      app._hideLoading()
+      wx.showToast({
+        title: '授权成功',
+      })
+      wx.setStorageSync('user', res)
+      this.$data.user = res
     })
   }
 })

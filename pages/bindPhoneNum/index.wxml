@@ -7,9 +7,9 @@
   <view class="listBox">
     验证码
     <input class="weui-input" placeholder="请输入" bindinput="inputChangeHandler" data-key="code"/>
-    <button class="btn">
-    点击获取
-  </button>
+    <button class="btn" bindtap="getCodeHandler">
+      {{codeText}}
+    </button>
   </view>
   <view class="footerBtn">
     <button class="btn" bindtap="bindHandler">

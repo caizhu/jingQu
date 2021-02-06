@@ -9,7 +9,7 @@ grace.page({
     rightArrow:'../../images/arrow.png',
     editPen:'../../images/editPen.png',
   },
-  onLoad(){
+  onShow(){
     this.getUserInfo()
   },
   goToBuyList(){
