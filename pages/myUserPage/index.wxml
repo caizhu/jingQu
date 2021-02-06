@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
     <view class="peopleHeader">
-      <View class="peopleImg" bindtap="updateUserImg">
+      <View class="peopleImg">
        <open-data type="userAvatarUrl"></open-data>
       </View>
   </view>
