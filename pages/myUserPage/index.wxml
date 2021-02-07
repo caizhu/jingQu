@@ -9,7 +9,7 @@
     昵称
     <h5>{{user.nickName}}</h5>
   </view>
-  <view class="listBox">
+  <view class="listBox" bindtap="updatePhoneHandler">
     手机号码
     <h5>{{user.userTel}}</h5>
   </view>

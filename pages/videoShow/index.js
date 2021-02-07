@@ -5,10 +5,11 @@ const app = getApp()
 grace.page({
   data: {
     videoId: 4,
-    videoData: null
+    videoData: null,
+    wxStatus:0 //是否授权
   },
   onLoad(options) {
-    this.$data.videoId = options.id
+    this.$data.videoId = options.id || 20
     wx.showLoading({
       title: '正在制作中...',
       icon: 'loading'
@@ -21,10 +22,18 @@ grace.page({
         this.queryDetail()
       }
     }, 1000);
+    this.checkStatus()
   },
   onUnload() {
     wx.reLaunch({
       url: '/pages/index/index',
+    })
+  },
+  checkStatus(){
+    app._showLoading()
+    this.$http.get(api.appUser.checkWxStatus).then(res=>{
+      app._hideLoading()
+      this.$data.wxStatus = res.wxStatus
     })
   },
   onShareAppMessage() { //转发给朋友
@@ -33,6 +42,25 @@ grace.page({
       path: '/pages/beShared/index?id=' + this.$data.videoId,
       imageUrl: this.$data.videoData.templateMainImageUrl
     }
+  },
+  getUserInfoHandler(){
+    const that = this
+    wx.getUserInfo({
+      success:(res)=>{
+        console.log(res)
+        const user = wx.getStorageSync('user')
+        that.$http.post(api.appUser.getWxInfo,{
+          encryptedData:res.encryptedData,
+          iv:res.iv,
+          openId:user.openId,
+          sessionKey:user.sessionKey
+        }).then(res=>{
+          console.log(res)
+          wx.setStorageSync('user', res)
+          that.$data.wxStatus = 1
+        })
+      }
+    })
   },
   queryDetail() {
     this.$http.get(api.appOperation.getProductVideo, {

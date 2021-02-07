@@ -20,6 +20,11 @@ grace.page({
       wx.setStorageSync('user', res)
     })
   },
+  updatePhoneHandler(){
+    wx.navigateTo({
+      url: '/pages/bindPhoneNum/index',
+    })
+  },
   getPhoneHandler(e){
     const detail = e.detail
     app._showLoading()
