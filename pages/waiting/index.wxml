@@ -1,13 +1,10 @@
 <!--index.wxml-->
 <view class="container">
   <view class="mainbox">
-    <h3>请稍等.....</h3>
-    <view class="myVideoSection">
-      <video src="{{waitData.adImageUrl}}" autoplay="true" controls object-fit="cover" loop="true"
-        style="width:100%;height:300px"></video>
-    </view>
+    <image src="{{imgUrl}}" class="imgLogo"></image>
     <view class="progress-box">
-      <progress percent="{{percent}}" color="#345dfb" border-radius="10" show-info stroke-width="6" />
+      <progress percent="{{percent}}" color="#345dfb" border-radius="10" show-info stroke-width="16" />
     </view>
+    <h3>视频正在玩命制作中~</h3>
   </view>
 </view>

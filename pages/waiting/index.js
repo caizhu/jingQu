@@ -4,6 +4,7 @@ import api from '../../utils/api'
 const app = getApp()
 grace.page({
   data:{
+    imgUrl:'../../images/logo.png',
     areaId:1,
     waitData:null,
     percent:0,
