@@ -61,6 +61,10 @@ grace.page({
         const path = res.tempFilePath
         if (res.duration > duration) {
           that.editPhoto(index, duration, path)
+        }else if(res.duration>30){
+          wx.showToast({
+            title: '视频长度不能超过30s',
+          })
         } else {
           wx.showToast({
             title: `视频长度过小`,
@@ -92,6 +96,10 @@ grace.page({
             success(){
               that.editPhoto(index, duration, path)
             }
+          })
+        }else if(tempDuration>30){
+          wx.showToast({
+            title: '视频长度不能超过30s',
           })
         } else {
           let videoList = that.$data.videoPartList

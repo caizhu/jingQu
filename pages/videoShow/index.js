@@ -44,10 +44,12 @@ grace.page({
     }
   },
   getUserInfoHandler(){
+    console.log('手动申请微信授权')
     const that = this
     wx.getUserInfo({
       success:(res)=>{
         console.log(res)
+        console.log('获取到微信授权'+res)
         const user = wx.getStorageSync('user')
         that.$http.post(api.appUser.getWxInfo,{
           encryptedData:res.encryptedData,

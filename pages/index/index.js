@@ -23,7 +23,7 @@ grace.page({
     }else if(wx.getStorageSync('areaCode')){
       this.$data.areaCode = wx.getStorageSync('areaCode')
     }else{
-      this.$data.areaCode = 'zhxld'
+      this.$data.areaCode = '123456'
     }
     
     const interval = setInterval(()=>{ 
