@@ -124,7 +124,7 @@ grace.page({
           tmplIds: ['S-Lhv93FTvSxfyObEv_R3CcXbB5eKvkaGgTLZIhv4xQ'],
           success(res) {
             wx.showLoading({
-              title: '上传中',
+              title: '制作中',
               icon: 'loading'
             })
             let videoArray = []

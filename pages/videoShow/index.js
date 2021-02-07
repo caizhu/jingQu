@@ -6,7 +6,7 @@ grace.page({
   data: {
     videoId: 4,
     videoData: null,
-    wxStatus:0 //是否授权
+    wxStatus:1 //是否授权
   },
   onLoad(options) {
     this.$data.videoId = options.id || 20
@@ -22,7 +22,7 @@ grace.page({
         this.queryDetail()
       }
     }, 1000);
-    this.checkStatus()
+    // this.checkStatus()
   },
   onUnload() {
     wx.reLaunch({
@@ -30,9 +30,11 @@ grace.page({
     })
   },
   checkStatus(){
+    console.log('检测微信授权')
     app._showLoading()
     this.$http.get(api.appUser.checkWxStatus).then(res=>{
       app._hideLoading()
+      console.log(res)
       this.$data.wxStatus = res.wxStatus
     })
   },
@@ -61,6 +63,9 @@ grace.page({
           wx.setStorageSync('user', res)
           that.$data.wxStatus = 1
         })
+      },
+      fail:(err)=>{
+        console.log('获取用户信息失败：'+err)
       }
     })
   },

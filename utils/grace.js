@@ -1,7 +1,8 @@
 import grace from './grace-min'
 
 
-grace.http.config.baseURL = 'https://video.haiwang.cool/'
+grace.http.config.baseURL = 'https://api.ssyunyou.com/'
+// grace.http.config.baseURL = 'https://video.haiwang.cool/'
 grace.http.config.timeout = 10000;
 grace.http.interceptors.request.use(
   (request)=>{
