@@ -13,7 +13,7 @@ grace.page({
   },
   onLoad(options){
     this.$data.areaId = options.areaId
-    this.$data.duration = options.duration
+    this.$data.duration = parseInt(options.duration) * 4
     this.$data.videoId = options.videoId
     this.queryDetail()
     const interval = setInterval(() => {

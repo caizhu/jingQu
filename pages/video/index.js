@@ -15,13 +15,13 @@ grace.page({
       this.loadDetail()
     }, 1000);
   },
-  onShareAppMessage(res) { //转发给朋友
-    return {
-      title: this.$data.detail.templateName,
-      path: '/pages/video/index?id=' + this.$data.id,
-      imageUrl: this.$data.detail.mainImageUrl
-    }
-  },
+  // onShareAppMessage(res) { //转发给朋友
+  //   return {
+  //     title: this.$data.detail.templateName,
+  //     path: '/pages/video/index?id=' + this.$data.id,
+  //     imageUrl: this.$data.detail.mainImageUrl
+  //   }
+  // },
   loadDetail() {
     app._showLoading()
     this.$http.get(api.appOperation.queryTemplate, {
@@ -61,9 +61,9 @@ grace.page({
         const path = res.tempFilePath
         if (res.duration > duration) {
           that.editPhoto(index, duration, path)
-        }else if(res.duration>30){
+        }else if(res.duration>10){
           wx.showToast({
-            title: '视频长度不能超过30s',
+            title: '视频长度不能超过10s',
           })
         } else {
           wx.showToast({
@@ -97,9 +97,9 @@ grace.page({
               that.editPhoto(index, duration, path)
             }
           })
-        }else if(tempDuration>30){
+        }else if(tempDuration>10){
           wx.showToast({
-            title: '视频长度不能超过30s',
+            title: '视频长度不能超过10s',
           })
         } else {
           let videoList = that.$data.videoPartList

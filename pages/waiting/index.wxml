@@ -5,6 +5,6 @@
     <view class="progress-box">
       <progress percent="{{percent}}" color="#345dfb" border-radius="10" show-info stroke-width="16" />
     </view>
-    <h3>视频正在玩命制作中~</h3>
+    <h3>视频正在制作中，请稍等2-3分钟</h3>
   </view>
 </view>

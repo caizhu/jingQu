@@ -11,13 +11,13 @@ grace.page({
     this.$data.videoId = options.id
     this.queryData()
   },
-  onShareAppMessage() { //转发给朋友
-    return {
-      title: this.$data.videoData.templateName,
-      path: '/pages/beShared/index?id=' + this.$data.videoId,
-      imageUrl: this.$data.videoData.templateMainImageUrl
-    }
-  },
+  // onShareAppMessage() { //转发给朋友
+  //   return {
+  //     title: this.$data.videoData.templateName,
+  //     path: '/pages/beShared/index?id=' + this.$data.videoId,
+  //     imageUrl: this.$data.videoData.templateMainImageUrl
+  //   }
+  // },
   queryData(){
     app._showLoading()
     this.$http.get(api.appOperation.getProductVideo,{
