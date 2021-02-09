@@ -102,11 +102,20 @@ grace.page({
             title: '视频长度不能超过10s',
           })
         } else {
-          let videoList = that.$data.videoPartList
-          videoList[index].sourceVideoUrl = res.tempFilePath
-          videoList[index].duration = parseInt(res.duration)/1000
-          that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-          console.log(that.$data.videoPartList)
+          wx.compressVideo({
+            quality: 'medium',
+            src: res.tempFilePath,
+            success:(compressRes)=>{
+              let videoList = that.$data.videoPartList
+              videoList[index].sourceVideoUrl = compressRes.tempFilePath
+              videoList[index].duration = parseInt(res.duration)/1000
+              that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+              console.log(that.$data.videoPartList)
+            },
+            fail:(err)=>{
+              console.log('视频压缩失败：'+err)
+            }
+          })
         }
       }
     })

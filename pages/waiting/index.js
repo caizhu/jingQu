@@ -17,7 +17,6 @@ grace.page({
       this.$data.percent += parseInt((1/this.$data.duration)*100)
       if(this.$data.percent >= 100){
         clearInterval(interval)
-        
       }
     }, 1000);
 
