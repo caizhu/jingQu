@@ -12,7 +12,7 @@ grace.page({
   onLoad(options){
     var that = this
     this.$data.duration = parseInt(options.duration) * 4
-    this.$data.videoId = options.videoId || 120
+    this.$data.videoId = options.videoId || 147
     const interval = setInterval(() => {
       this.$data.percent += parseInt((1/this.$data.duration)*100)
       if(this.$data.percent >= 100){
@@ -22,11 +22,9 @@ grace.page({
     }, 1000);
 
     const interval2 = setInterval(() => {
-      app._showLoading()
       that.$http.get(api.appOperation.checkVideoStatus,{
         videoId:that.$data.videoId
       }).then(res=>{
-        app._hideLoading()
         if(res.productStatus === 2){
           clearInterval(interval2)
           wx.redirectTo({

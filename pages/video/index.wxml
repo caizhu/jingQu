@@ -17,7 +17,7 @@
         ￥{{detail.publicPrice}}
       </h5>
     </block>
-    <h5 wx:else>已购买</h5>
+    <h5 wx:elif="{{detail.orderStatus === 1}}">已购买</h5>
     <!-- <button class=" btn shareBtn" open-type="share" bindtap="onShareAppMessage">
       <image src="../../images/share.png"></image>分享
     </button> -->
