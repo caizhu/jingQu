@@ -1,5 +1,6 @@
 {
   "pages":[ 
+    "pages/waiting/index",
     "pages/index/index",
     "pages/videoShow/index",
     "pages/beShared/index",
@@ -8,7 +9,6 @@
     "pages/myUserPage/index",
     "pages/loginPage/index",
     "pages/video/index",
-    "pages/waiting/index",
     "pages/buyList/index",
     "pages/login/index"
   ],

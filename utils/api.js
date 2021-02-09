@@ -20,6 +20,7 @@ export default {
         buyProduct:'/api/appOperation/buyProduct',
         getProductVideo:'/api/appOperation/getProductVideo',
         getWaitingVideo:'/api/appOperation/getWaitingVideo',
-        buyVideo:'/api/appOperation/buyVideo'
+        buyVideo:'/api/appOperation/buyVideo',
+        checkVideoStatus:'/api/appVideo/checkVideoStatus'
     }
 }
