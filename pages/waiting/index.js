@@ -22,9 +22,11 @@ grace.page({
     }, 1000);
 
     const interval2 = setInterval(() => {
+      app._showLoading()
       that.$http.get(api.appOperation.checkVideoStatus,{
         videoId:that.$data.videoId
       }).then(res=>{
+        app._hideLoading()
         if(res.productStatus === 2){
           clearInterval(interval2)
           wx.redirectTo({
