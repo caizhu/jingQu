@@ -40,6 +40,7 @@ grace.page({
       wx.showModal({
         title:'提示',
         content:'您即将上传自己的视频内容，请在剪裁界面左右拖动进度条',
+        showCancel:false,
         success(res){
          if(res.confirm){
           that.$data.firstClick = false
@@ -59,21 +60,19 @@ grace.page({
       camera: ['camera', 'album'],
       success: (res) => {
         const path = res.tempFilePath
-        if (res.duration > duration) {
-          that.editPhoto(index, duration, path)
-        }else if(res.duration>10){
-          wx.showToast({
-            title: '视频长度不能超过10s',
+        if (res.duration >= duration) {
+          that.editPhoto(index, duration,res.duration, path)
+        }else if(res.duration<duration){
+          wx.showModal({
+            content:'您选择的视频长度太小了，请重新选择',
+            showCancel:false,
+            success:(res)=>{
+              if(res.confirm){
+                return
+              }
+            }
           })
-        } else {
-          wx.showToast({
-            title: `视频长度过小`,
-          })
-          // let videoList = this.$data.videoPartList
-          // videoList[index].sourceVideoUrl = res.tempFilePath
-          // videoList[index].duration = parseInt(res.duration)
-          // that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-        }
+        } 
       },
       faile: (err) => {
         console.log(err)
@@ -84,41 +83,62 @@ grace.page({
       }
     })
   },
-  editPhoto(index, duration, path) {
+  editPhoto(index, duration,videoDataDuration, path) {
     const that = this
-    wx.openVideoEditor({
-      filePath: path,
-      success: (res) => {
-        const tempDuration = parseInt(res.duration / 1000)
-        if (tempDuration < duration) {
-          wx.showToast({
-            title: '视频长度过小',
-            success(){
-              that.editPhoto(index, duration, path)
-            }
-          })
-        }else if(tempDuration>10){
-          wx.showToast({
-            title: '视频长度不能超过10s',
-          })
-        } else {
-          wx.compressVideo({
-            quality: 'medium',
-            src: res.tempFilePath,
-            success:(compressRes)=>{
-              let videoList = that.$data.videoPartList
-              videoList[index].sourceVideoUrl = compressRes.tempFilePath
-              videoList[index].duration = parseInt(res.duration)/1000
-              that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-              console.log(that.$data.videoPartList)
-            },
-            fail:(err)=>{
-              console.log('视频压缩失败：'+err)
-            }
-          })
+    if(parseInt(videoDataDuration)>=16){
+      wx.showModal({
+        content:'您的视频需要进行裁剪，点击确定前往裁剪页面，左右拖动进度条进行裁剪',
+        showCancel:false,
+        success:(res)=>{
+          if(res.confirm){
+            wx.openVideoEditor({
+              filePath: path,
+              success: (res) => {
+                const tempDuration = parseInt(res.duration / 1000)
+                if (tempDuration < duration) {
+                  wx.showToast({
+                    title: '视频长度过小',
+                    success(){
+                      that.editPhoto(index, duration,videoDataDuration, path)
+                    }
+                  })
+                }else if(tempDuration>16){
+                  that.editPhoto(index,duration,videoDataDuration,path)
+                } else {
+                  wx.compressVideo({
+                    quality: 'medium',
+                    src: res.tempFilePath,
+                    success:(compressRes)=>{
+                      let videoList = that.$data.videoPartList
+                      videoList[index].sourceVideoUrl = compressRes.tempFilePath
+                      videoList[index].duration = parseInt(res.duration)/1000
+                      that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+                    },
+                    fail:(err)=>{
+                      console.log('视频压缩失败：'+err)
+                    }
+                  })
+                }
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    }else{
+      wx.compressVideo({
+        quality: 'medium',
+        src: path,
+        success:(compressRes)=>{
+          let videoList = that.$data.videoPartList
+          videoList[index].sourceVideoUrl = compressRes.tempFilePath
+          videoList[index].duration = parseInt(duration)/1000
+          that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+        },
+        fail:(err)=>{
+          console.log('视频压缩失败：'+err)
+        }
+      })
+    }
   },
   makeVideoHandler() {
     const that = this
