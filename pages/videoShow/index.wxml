@@ -9,7 +9,7 @@
       object-fit="cover"
       autoplay="true"
       loop="true"
-      style="width:100%;height:240px"
+      style="width:{{videoData.videoWidth}}rpx;height:{{videoData.videoHeight}}rpx"
     ></video>    
   </view>  
      <view class="con1">

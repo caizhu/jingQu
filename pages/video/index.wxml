@@ -2,7 +2,7 @@
 <view class="container">
   <view class="myVideoSection">
     <video src="{{detail.guestVideoUrl}}" autoplay="true" poster="{{detail.mainImageUrl}}" object-fit="cover"
-       style="width:100%;height:240px"></video>
+       style="width:{{detail.videoWidth}}rpx;height:{{detail.videoHeight}}rpx"></video>
   </view>
   <view class="mainbox headerbox">
     <h3>{{detail.templateName}}</h3>

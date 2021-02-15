@@ -85,7 +85,7 @@ grace.page({
   },
   editPhoto(index, duration,videoDataDuration, path) {
     const that = this
-    if(parseInt(videoDataDuration)>=16){
+    if(parseInt(videoDataDuration)>parseInt(duration)){
       wx.showModal({
         content:'您的视频需要进行裁剪，点击确定前往裁剪页面，左右拖动进度条进行裁剪',
         showCancel:false,

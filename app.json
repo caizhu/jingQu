@@ -1,8 +1,8 @@
 {
   "pages":[ 
     "pages/index/index",
-    "pages/waiting/index",
     "pages/videoShow/index",
+    "pages/waiting/index",
     "pages/beShared/index",
     "pages/myCenter/index",
     "pages/bindPhoneNum/index",

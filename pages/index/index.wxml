@@ -23,7 +23,7 @@
           controls
           autoplay="{{index === 0}}"
           object-fit="cover"
-          style="width:100%;height:200px"
+          style="width: {{item.videoWidth}}rpx;height: {{item.videoHeight}}rpx;"
         ></video>
         <view class="contentList">
             <h3>{{item.templateName}}</h3>

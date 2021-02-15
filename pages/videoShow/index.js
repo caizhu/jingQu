@@ -9,7 +9,7 @@ grace.page({
     wxStatus:1 //是否授权
   },
   onLoad(options) {
-    this.$data.videoId = options.id || 20
+    this.$data.videoId = options.id || 120
     wx.showLoading({
       title: '正在制作中...',
       icon: 'loading'
