@@ -15,7 +15,7 @@ grace.page({
       icon: 'loading'
     })
     this.queryDetail()
-    // this.checkStatus()
+    this.checkStatus()
   },
   // onUnload() {
   //   wx.reLaunch({
@@ -31,13 +31,13 @@ grace.page({
       this.$data.wxStatus = res.wxStatus
     })
   },
-  // onShareAppMessage() { //转发给朋友
-  //   return {
-  //     title: this.$data.videoData.templateName,
-  //     path: '/pages/beShared/index?id=' + this.$data.videoId,
-  //     imageUrl: this.$data.videoData.templateMainImageUrl
-  //   }
-  // },
+  onShareAppMessage() { //转发给朋友
+    return {
+      title: this.$data.videoData.templateName,
+      path: '/pages/beShared/index?id=' + this.$data.videoId,
+      imageUrl: this.$data.videoData.templateMainImageUrl
+    }
+  },
   getUserInfoHandler(){
     console.log('手动申请微信授权')
     const that = this

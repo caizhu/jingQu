@@ -15,13 +15,13 @@ grace.page({
       this.loadDetail()
     }, 1000);
   },
-  // onShareAppMessage(res) { //转发给朋友
-  //   return {
-  //     title: this.$data.detail.templateName,
-  //     path: '/pages/video/index?id=' + this.$data.id,
-  //     imageUrl: this.$data.detail.mainImageUrl
-  //   }
-  // },
+  onShareAppMessage(res) { //转发给朋友
+    return {
+      title: this.$data.detail.templateName,
+      path: '/pages/video/index?id=' + this.$data.id,
+      imageUrl: this.$data.detail.mainImageUrl
+    }
+  },
   loadDetail() {
     app._showLoading()
     this.$http.get(api.appOperation.queryTemplate, {
@@ -74,7 +74,7 @@ grace.page({
           })
         } 
       },
-      faile: (err) => {
+      fail: (err) => {
         console.log(err)
         wx.showToast({
           title: '上传视频失败',

@@ -18,8 +18,8 @@
       <p>时长：{{videoData.videoDuration}}秒</p>
      </view>
     <view class="con2">
-      <!-- <button class=" btn shareBtn" wx:if="{{wxStatus === 0}}" bindtap="getUserInfoHandler"> <image src="../../images/share.png"></image>分享</button>
-      <button class=" btn shareBtn" open-type="share" wx:elif="{{wxStatus === 1}}"> <image src="../../images/share.png"></image>分享</button> -->
+      <button class=" btn shareBtn" wx:if="{{wxStatus === 0}}" bindtap="getUserInfoHandler"> <image src="../../images/share.png"></image>分享</button>
+      <button class=" btn shareBtn" open-type="share" wx:elif="{{wxStatus === 1}}"> <image src="../../images/share.png"></image>分享</button>
       <!-- <button class=" btn shareBtn quan" bindtap="onShareTimeline"> <image src="../../images/quan.png"></image>朋友圈</button> -->
     </view>
     </view>
