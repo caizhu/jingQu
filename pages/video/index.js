@@ -58,6 +58,7 @@ grace.page({
     const that = this
     wx.chooseVideo({
       camera: ['camera', 'album'],
+      compress:true,
       success: (res) => {
         const path = res.tempFilePath
         if (res.duration >= duration) {
@@ -105,19 +106,23 @@ grace.page({
                 }else if(tempDuration>16){
                   that.editPhoto(index,duration,videoDataDuration,path)
                 } else {
-                  wx.compressVideo({
-                    quality: 'medium',
-                    src: res.tempFilePath,
-                    success:(compressRes)=>{
-                      let videoList = that.$data.videoPartList
-                      videoList[index].sourceVideoUrl = compressRes.tempFilePath
-                      videoList[index].duration = parseInt(res.duration)/1000
-                      that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-                    },
-                    fail:(err)=>{
-                      console.log('视频压缩失败：'+err)
-                    }
-                  })
+                  let videoList = that.$data.videoPartList
+                  videoList[index].sourceVideoUrl = res.tempFilePath
+                  videoList[index].duration = parseInt(res.duration)/1000
+                  that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+                  // wx.compressVideo({
+                  //   quality: 'medium',
+                  //   src: res.tempFilePath,
+                  //   success:(compressRes)=>{
+                  //     let videoList = that.$data.videoPartList
+                  //     videoList[index].sourceVideoUrl = compressRes.tempFilePath
+                  //     videoList[index].duration = parseInt(res.duration)/1000
+                  //     that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+                  //   },
+                  //   fail:(err)=>{
+                  //     console.log('视频压缩失败：'+JSON.stringify(err))
+                  //   }
+                  // })
                 }
               }
             })
@@ -125,19 +130,24 @@ grace.page({
         }
       })
     }else{
-      wx.compressVideo({
-        quality: 'medium',
-        src: path,
-        success:(compressRes)=>{
-          let videoList = that.$data.videoPartList
-          videoList[index].sourceVideoUrl = compressRes.tempFilePath
-          videoList[index].duration = parseInt(duration)/1000
-          that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
-        },
-        fail:(err)=>{
-          console.log('视频压缩失败：'+err)
-        }
-      })
+      let videoList = that.$data.videoPartList
+      videoList[index].sourceVideoUrl = path
+      videoList[index].duration = parseInt(duration)/1000
+      that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+
+      // wx.compressVideo({
+      //   quality: 'medium',
+      //   src: path,
+      //   success:(compressRes)=>{
+      //     let videoList = that.$data.videoPartList
+      //     videoList[index].sourceVideoUrl = compressRes.tempFilePath
+      //     videoList[index].duration = parseInt(duration)/1000
+      //     that.$data.videoPartList = JSON.parse(JSON.stringify(videoList))
+      //   },
+      //   fail:(err)=>{
+      //     console.log('视频压缩失败：'+JSON.stringify(err))
+      //   }
+      // })
     }
   },
   makeVideoHandler() {
